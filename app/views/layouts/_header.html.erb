@@ -1,0 +1,45 @@
+<header class="bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-5">
+         <a class="navbar-brand p-3 text-dark" href="/">Aha!</a>
+      </div>
+      <div class="col-7 d-flex align-items-end justify-content-center flex-column">
+        <div class="row mr-1">
+        <% if user_signed_in? %>
+          <div class="mb-2">こんにちは <span class="font-weight-bold text-info h5"><%= current_user.name %></span> さん</div>
+        <% elsif admin_signed_in? %>
+          <div class="mb-2">こんにちは <span class="font-weight-bold text-danger h5">管理者</span> さん</div>
+        <% else %>
+          <div class="mb-2">こんにちは <span class="font-weight-bold h5" >ゲスト</span> さん</div>
+        <% end %>
+        </div>
+        <div class="row">
+          <% if user_signed_in? %>
+          <div class="d-flex">
+            <div class="float"><%= link_to 'マイページ',root_path,class: 'nav-link text-dark' %></div>
+            <div class="float"><%= link_to 'Aha!について',root_path,class: 'nav-link text-dark' %></div>
+            <div class="float"><%= link_to 'アイデア一覧',root_path,class: 'nav-link text-dark' %></div>
+            <div class="float"><%= link_to 'アイデア募集',root_path ,class: 'nav-link text-dark' %></div>
+            <div class="float"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,class: 'nav-link text-dark' %></div>
+          </div>
+          <% elsif admin_signed_in? %>
+          <div class="d-flex">
+            <div class="float"><%= link_to 'ユーザー一覧',root_path,class: 'nav-link text-dark' %></div>
+            <div class="float"><%= link_to 'アイデア一覧',root_path,class: 'nav-link text-dark' %></div>
+            <div class="float"><%= link_to 'アイデア募集一覧',root_path,class: 'nav-link text-dark' %></div>
+            <div class="float"><%= link_to 'ログアウト',destroy_admin_session_path,method: :delete,class: 'nav-link text-dark' %></div>
+          </div>
+          <% else %>
+          <div class="d-flex">
+            <div class="float"><%= link_to 'Aha!について',about_path,class: 'nav-link text-dark' %></div>
+            <div class="float"><%= link_to 'アイデア一覧',root_path,class: 'nav-link text-dark' %></div>
+            <div class="float"><%= link_to 'アイデア募集',root_path,class: 'nav-link text-dark' %></div>
+            <div class="float"><%= link_to 'ログイン/新規登録',new_user_session_path,class: 'nav-link text-dark'%></div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
