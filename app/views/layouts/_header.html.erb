@@ -1,10 +1,10 @@
 <header class="bg-light">
   <div class="container">
     <div class="row">
-      <div class="col-5">
+      <div class="col-3">
          <a class="navbar-brand p-3 text-dark" href="/">Aha!</a>
       </div>
-      <div class="col-7 d-flex align-items-end justify-content-center flex-column">
+      <div class="col-9 d-flex align-items-end justify-content-center flex-column">
         <div class="row mr-1">
         <% if user_signed_in? %>
           <div class="mb-2">こんにちは <span class="font-weight-bold text-info h5"><%= current_user.name %></span> さん</div>
@@ -17,6 +17,8 @@
         <div class="row">
           <% if user_signed_in? %>
           <div class="d-flex">
+            <div class="float"><%= link_to 'アイデア投稿',new_users_post_path,class: 'btn btn-outline-danger mr-1' %></div>
+            <div class="float"><%= link_to 'アイデア募集',root_path,class: 'btn btn-outline-success' %></div>
             <div class="float"><%= link_to 'マイページ',root_path,class: 'nav-link text-dark' %></div>
             <div class="float"><%= link_to 'Aha!について',root_path,class: 'nav-link text-dark' %></div>
             <div class="float"><%= link_to 'アイデア一覧',root_path,class: 'nav-link text-dark' %></div>
