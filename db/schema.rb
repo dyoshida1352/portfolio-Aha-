@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_15_031937) do
+ActiveRecord::Schema.define(version: 2021_07_19_011051) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 2021_07_15_031937) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "post_name"
+    t.text "post_description"
+    t.string "post_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -34,6 +43,7 @@ ActiveRecord::Schema.define(version: 2021_07_15_031937) do
     t.integer "age", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "user_image_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -13,5 +13,8 @@ Rails.application.routes.draw do
   root to: "users/homes#top"
   get "/about" => "users/homes#about"
 
+  namespace :users do
+    resources :posts
+  end
 
 end

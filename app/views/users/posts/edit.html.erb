@@ -1,0 +1,24 @@
+<div class="container">
+  <h2 class="mt-4 mb-4 ">アイデア編集</h2>
+  <%= form_with model: [:users, @post], local: true do |f| %>
+    <div class="row mb-3">
+      <div class="col-3 offset-2"><%= f.label :アイデア画像 %></div>
+      <div class="col-3"><%= f.attachment_field :post_image %></div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3 offset-2"><%= f.label :アイデア名 %></div>
+      <div class="col-3"><%= f.text_field :post_name, autofocus: true %></div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3 offset-2"><%= f.label :タグ %></div>
+      <div class="col-3"></div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3 offset-2"><%= f.label :アイデア説明 %></div>
+      <div class="col-3"><%= f.text_area :post_description, autofocus: true %></div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-2 offset-5"><%= f.submit "変更を保存", class: "btn btn-success" %></div>
+    </div>
+  <% end %>
+</div>
