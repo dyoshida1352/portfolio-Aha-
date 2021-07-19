@@ -1,18 +1,16 @@
 <div class="container">
-  <div class="row">
+  <div class="row mt-4 mb-4">
     <div class="col-md-12 align-ceter">
       <h2>アイデア一覧</h2><span>(全<%= @post_count %>件)</span>
       <div class="row mt-4 align-center">
-        <% @posts.each do |item| %>
-        <div class="col-md-3">
+        <% @posts.each do |post| %>
+        <div class="col-md-3 border border-secondary mr-4">
           <div class="d-flex justify-content-center">
-           <%= link_to users_post_path(post) do %><!-- 画像クリックで詳細ページへ -->
-           <div>
-           <%= attachment_image_tag post, :post_image, size: "206x150", fallback: "no-post-image.jpg" %>
-           </div>
-           <% end %>
+            <div>
+            <%= attachment_image_tag post, :post_image, size: "206x150", fallback: "no-post-image.jpg" %>
+            </div>
           </div>
-           <p class="text-center"><%= post.post_name %><br>いいね　コメント<br>タグ<br>日付　ユーザーネーム</p>
+          <p class="text-center"><%= link_to post.post_name, users_post_path(post) %><br>いいね　コメント<br>タグ<br>日付　ユーザーネーム</p>
         </div>
         <% end %>
       </div>
