@@ -20,22 +20,22 @@
             <div class="float"><%= link_to 'アイデア投稿',new_users_post_path,class: 'btn btn-outline-danger mr-1' %></div>
             <div class="float"><%= link_to 'アイデア募集',root_path,class: 'btn btn-outline-success' %></div>
             <div class="float"><%= link_to 'マイページ',root_path,class: 'nav-link text-dark' %></div>
-            <div class="float"><%= link_to 'Aha!について',root_path,class: 'nav-link text-dark' %></div>
-            <div class="float"><%= link_to 'アイデア一覧',root_path,class: 'nav-link text-dark' %></div>
+            <div class="float"><%= link_to 'Aha!について',about_path,class: 'nav-link text-dark' %></div>
+            <div class="float"><%= link_to 'アイデア一覧',users_posts_path,class: 'nav-link text-dark' %></div>
             <div class="float"><%= link_to 'アイデア募集',root_path ,class: 'nav-link text-dark' %></div>
             <div class="float"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,class: 'nav-link text-dark' %></div>
           </div>
           <% elsif admin_signed_in? %>
           <div class="d-flex">
             <div class="float"><%= link_to 'ユーザー一覧',root_path,class: 'nav-link text-dark' %></div>
-            <div class="float"><%= link_to 'アイデア一覧',root_path,class: 'nav-link text-dark' %></div>
+            <div class="float"><%= link_to 'アイデア一覧',users_posts_path,class: 'nav-link text-dark' %></div>
             <div class="float"><%= link_to 'アイデア募集一覧',root_path,class: 'nav-link text-dark' %></div>
             <div class="float"><%= link_to 'ログアウト',destroy_admin_session_path,method: :delete,class: 'nav-link text-dark' %></div>
           </div>
           <% else %>
           <div class="d-flex">
             <div class="float"><%= link_to 'Aha!について',about_path,class: 'nav-link text-dark' %></div>
-            <div class="float"><%= link_to 'アイデア一覧',root_path,class: 'nav-link text-dark' %></div>
+            <div class="float"><%= link_to 'アイデア一覧',users_posts_path,class: 'nav-link text-dark' %></div>
             <div class="float"><%= link_to 'アイデア募集',root_path,class: 'nav-link text-dark' %></div>
             <div class="float"><%= link_to 'ログイン/新規登録',new_user_session_path,class: 'nav-link text-dark'%></div>
           </div>

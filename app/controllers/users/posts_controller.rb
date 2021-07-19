@@ -7,11 +7,12 @@ class Users::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @post.save
-    redirect_to root_path
+    redirect_to users_posts_path
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.all.page(params[:page]).per(8)
+    @post_count = Post.count
   end
 
   def show
