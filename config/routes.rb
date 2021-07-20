@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   namespace :users do
     resources :posts
+    resources :invites
   end
 
 end
