@@ -14,8 +14,14 @@ Rails.application.routes.draw do
   get "/about" => "users/homes#about"
 
   namespace :users do
-    resources :posts
-    resources :invites
+    resources :posts do
+      resources:post_comments, only: [:create, :destroy]
+    end
+
+    resources :invites do
+      resources:invite_comments, only: [:create, :destroy]
+    end
+
     resources :users, only: [:show, :edit, :update, :destroy] do
       member do
         get "quit"
