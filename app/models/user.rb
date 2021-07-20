@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :invites, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
+  has_many :invite_comments, dependent: :destroy
 
   #画像用の設定
   attachment :user_image
