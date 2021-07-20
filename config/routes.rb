@@ -16,6 +16,11 @@ Rails.application.routes.draw do
   namespace :users do
     resources :posts
     resources :invites
+    resources :users, only: [:show, :edit, :update, :destroy] do
+      member do
+        get "quit"
+      end
+    end
   end
 
 end

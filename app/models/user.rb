@@ -5,6 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy
+  has_many :invites, dependent: :destroy
+
+  #画像用の設定
+  attachment :user_image
 
   #新規登録時の年代選択
   enum age: {"--未選択--": 0,"10代": 1,"20代": 2,"30代": 3,"40代": 4,"50代": 5,"60代以上": 6}

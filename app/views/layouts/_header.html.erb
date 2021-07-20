@@ -19,7 +19,7 @@
           <div class="d-flex">
             <div class="float"><%= link_to 'アイデア投稿',new_users_post_path,class: 'btn btn-outline-danger mr-1' %></div>
             <div class="float"><%= link_to 'アイデア募集',new_users_invite_path,class: 'btn btn-outline-success' %></div>
-            <div class="float"><%= link_to 'マイページ',root_path,class: 'nav-link text-dark' %></div>
+            <div class="float"><%= link_to 'マイページ',users_user_path(id: current_user),class: 'nav-link text-dark' %></div>
             <div class="float"><%= link_to 'Aha!について',about_path,class: 'nav-link text-dark' %></div>
             <div class="float"><%= link_to 'アイデア一覧',users_posts_path,class: 'nav-link text-dark' %></div>
             <div class="float"><%= link_to 'アイデア募集',users_invites_path,class: 'nav-link text-dark' %></div>
