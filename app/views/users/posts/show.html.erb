@@ -14,9 +14,9 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-4">
+    <div class="col-4" id="post_<%= @post.id %>">
       <div><%= attachment_image_tag @post, :post_image, fallback: "no_post_image.jpg", size: "250x200" %></div>
-      <p>いいね<%= render "users/likes/like-btn", post: @post %></p>
+      いいね<p class="like-btn"><%= render "users/likes/like-btn", post: @post %></p>
       <p>お気に入り</p>
       <p>タグ #〇〇　#〇〇</p>
     </div>
