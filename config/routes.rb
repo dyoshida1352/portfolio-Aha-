@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   namespace :users do
     resources :posts do
       resources:post_comments, only: [:create, :destroy]
+      resource :likes, only: [:create, :destroy]
     end
 
     resources :invites do
