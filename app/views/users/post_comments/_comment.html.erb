@@ -1,4 +1,4 @@
-<table>
+<table class="mb-3">
   <% @post.post_comments.each do |post_comment| %>
     <% post_comment_user = post_comment.user %>
     <tr>
@@ -7,6 +7,7 @@
       		<%= attachment_image_tag post_comment_user, :user_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %><br>
       		<%= post_comment_user.name %>
     		<% end %>
+    		<%= date_format(post_comment.created_at) %>
     	</td>
     	<td><%= post_comment.post_comment %></td>
     	<% if current_user == post_comment_user %>

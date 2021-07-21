@@ -7,6 +7,7 @@
       		<%= attachment_image_tag invite_comment_user, :user_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %><br>
       		<%= invite_comment_user.name %>
     		<% end %>
+    		<%= date_format(invite_comment.created_at) %>
     	</td>
     	<td><%= invite_comment.invite_comment %></td>
     	<% if current_user == invite_comment_user %>

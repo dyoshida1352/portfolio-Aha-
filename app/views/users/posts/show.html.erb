@@ -1,7 +1,11 @@
 <div class="container">
-  <h2 class="mt-4 mb-4"><%= @post.post_name %></h2>
+  <h2 class="mt-4 mb-1"><%= @post.post_name %></h2>
+  <p class="mb-4"><%= @post.created_at.to_s(:datetime_ymd) %></p>
   <div class="row d-flex">
-    <h5 class="col-6">ユーザーネーム</h5>
+    <h5 class="col-6">
+      <%= attachment_image_tag @post.user, :user_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %>
+      <%= link_to @post.user.name, users_user_path(@post.user) %>
+    </h5>
     <div class="col-6">
     <% if @post.user == current_user %>
       <td><%= link_to "編集する", edit_users_post_path(@post), class:"btn btn-sm btn-success" %></td>
@@ -13,7 +17,6 @@
     <div class="col-4">
       <div><%= attachment_image_tag @post, :post_image, fallback: "no_post_image.jpg", size: "250x200" %></div>
       <p>いいね<%= render "users/likes/like-btn", post: @post %></p>
-      <p>コメント</p>
       <p>お気に入り</p>
       <p>タグ #〇〇　#〇〇</p>
     </div>

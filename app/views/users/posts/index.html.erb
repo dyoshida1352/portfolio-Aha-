@@ -13,7 +13,7 @@
           <p class="text-center"><%= link_to post.post_name, users_post_path(post) %></p>
           <p><%= post.likes.count %>いいね　　<%= post.post_comments.count %>コメント</p>
           <p>タグ</p>
-          <p><%= post.created_at.to_s(:datetime) %>　<%= link_to post.user.name, users_user_path(post.user) %></p>
+          <p><%= post.created_at.to_s(:datetime_ymd) %>　<%= link_to post.user.name, users_user_path(post.user) %></p>
         </div>
         <% end %>
       </div>
