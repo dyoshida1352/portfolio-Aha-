@@ -27,7 +27,11 @@ Rails.application.routes.draw do
       member do
         get "quit"
       end
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
     end
+
   end
 
 end
