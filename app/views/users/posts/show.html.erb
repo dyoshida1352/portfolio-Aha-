@@ -18,7 +18,6 @@
       <div><%= attachment_image_tag @post, :post_image, fallback: "no_post_image.jpg", size: "250x200" %></div>
       <p>いいね<span class="like-btn"><%= render "users/likes/like-btn", post: @post %></span></p>
       <p class="post-comments-count">コメント数：<%= @post.post_comments.count %></p>
-      <p>お気に入り</p>
       <p>タグ #〇〇　#〇〇</p>
     </div>
     <div class="col-6">
