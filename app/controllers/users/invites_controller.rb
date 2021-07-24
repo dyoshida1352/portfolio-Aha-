@@ -7,7 +7,9 @@ class Users::InvitesController < ApplicationController
     @new_invite = Invite.new
     @invite = Invite.new(post_params)
     @invite.user_id = current_user.id
+    invite_tag_list = params[:invite][:invite_tag_ids].split(',')
     if @invite.save
+      @invite.save_invite_tags(invite_tag_list)
       redirect_to users_invites_path
     else
       render :new
@@ -26,6 +28,7 @@ class Users::InvitesController < ApplicationController
 
   def edit
     @invite = Invite.find(params[:id])
+    @invite_tag_list =@invite.invite_tags.pluck(:invite_tag_name).join(",")
     if current_user != @invite.user
       redirect_to users_invites_path
     end
@@ -33,7 +36,9 @@ class Users::InvitesController < ApplicationController
 
   def update
     @invite = Invite.find(params[:id])
+    invite_tag_list = params[:invite][:invite_tag_ids].split(',')
     if @invite.update(post_params)
+      @invite.save_invite_tags(invite_tag_list)
       redirect_to users_invite_path(@invite)
     else
       render :edit

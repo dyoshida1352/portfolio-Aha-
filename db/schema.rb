@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_22_050312) do
+ActiveRecord::Schema.define(version: 2021_07_24_125043) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,6 +28,22 @@ ActiveRecord::Schema.define(version: 2021_07_22_050312) do
     t.integer "user_id"
     t.integer "invite_id"
     t.text "invite_comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "invite_tag_relationships", force: :cascade do |t|
+    t.integer "invite_id"
+    t.integer "invite_tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invite_id", "invite_tag_id"], name: "index_invite_tag_relationships_on_invite_id_and_invite_tag_id", unique: true
+    t.index ["invite_id"], name: "index_invite_tag_relationships_on_invite_id"
+    t.index ["invite_tag_id"], name: "index_invite_tag_relationships_on_invite_tag_id"
+  end
+
+  create_table "invite_tags", force: :cascade do |t|
+    t.string "invite_tag_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,6 +84,22 @@ ActiveRecord::Schema.define(version: 2021_07_22_050312) do
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tag_relationships", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id", "tag_id"], name: "index_tag_relationships_on_post_id_and_invite_id_and_tag_id", unique: true
+    t.index ["post_id"], name: "index_tag_relationships_on_post_id"
+    t.index ["tag_id"], name: "index_tag_relationships_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

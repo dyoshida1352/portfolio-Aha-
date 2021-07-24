@@ -7,7 +7,9 @@ class Users::PostsController < ApplicationController
     @new_post = Post.new
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    tag_list = params[:post][:tag_ids].split(',')
     if @post.save
+      @post.save_tags(tag_list)
       redirect_to users_posts_path
     else
       render :new
@@ -26,6 +28,7 @@ class Users::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @tag_list =@post.tags.pluck(:tag_name).join(",")
     if current_user != @post.user
       redirect_to users_posts_path
     end
@@ -33,7 +36,9 @@ class Users::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    tag_list = params[:post][:tag_ids].split(',')
     if @post.update(post_params)
+      @post.save_tags(tag_list)
       redirect_to users_post_path(@post)
     else
       render :edit

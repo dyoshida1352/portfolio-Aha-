@@ -7,15 +7,16 @@
     </div>
     <div class="row mb-3">
       <div class="col-3 offset-2"><%= f.label :アイデア名 %></div>
-      <div class="col-3"><%= f.text_field :post_name, autofocus: true %></div>
+      <div class="col-3"><%= f.text_field :post_name, class: "form-control", autofocus: true %></div>
     </div>
     <div class="row mb-3">
       <div class="col-3 offset-2"><%= f.label :タグ %></div>
-      <div class="col-3"></div>
+      <div class="col-5"><%= f.text_field :tag_ids, class: "form-control", id:'tag_ids',\
+                            placeholder: "タグを複数つける場合は','で区切ってください" %></div>
     </div>
     <div class="row mb-3">
       <div class="col-3 offset-2"><%= f.label :アイデア説明 %></div>
-      <div class="col-3"><%= f.text_area :post_description, autofocus: true %></div>
+      <div class="col-3"><%= f.text_area :post_description, class: "form-control", autofocus: true %></div>
     </div>
     <div class="row mb-3">
       <div class="col-2 offset-5"><%= f.submit "投稿", class: "btn btn-success" %></div>
