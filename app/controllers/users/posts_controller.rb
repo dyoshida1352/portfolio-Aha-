@@ -8,6 +8,8 @@ class Users::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
+      tag_list = tag_params[:tag_names].split(/[[:blank:]]+/).select(&:present?)
+      @post.save_tags(tag_list)
       redirect_to users_posts_path
     else
       render :new
@@ -33,7 +35,10 @@ class Users::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    tag = tag_params[:tag_names]
     if @post.update(post_params)
+      tag_list = tag.split(/[[:blank:]]+/).select(&:present?)
+      @post.save_tags(tag_list)
       redirect_to users_post_path(@post)
     else
       render :edit
@@ -50,6 +55,10 @@ class Users::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:post_name, :post_description, :post_image)
+  end
+
+  def tag_params
+    params.require(:post).permit(:tag_names)
   end
 
 end
