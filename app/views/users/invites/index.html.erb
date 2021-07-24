@@ -9,7 +9,7 @@
               <th>アイデア募集名</th>
               <th>ユーザー名</th>
               <th></th>
-              <th colspan="4"></th>
+              <th colspan=5></th>
             </tr>
           </thead>
           <tbody>
@@ -19,6 +19,7 @@
               <td><%= link_to invite.user.name, users_user_path(invite.user) %></td>
               <td><%= invite.created_at.to_s(:datetime_ymd) %></td>
               <td><%= invite.invite_comments.count %>コメント</td>
+              <td><%= render "tag", invite: invite %></td>
             </tr>
             <% end %>
           </tbody>
