@@ -5,13 +5,23 @@
          <a class="navbar-brand p-3 text-dark" href="/">Aha!</a>
       </div>
       <div class="col-9 d-flex align-items-end justify-content-center flex-column">
-        <div class="row mr-1">
-        <% if user_signed_in? %>
-          <div class="mb-2">こんにちは <span class="font-weight-bold text-info h5"><%= current_user.name %></span> さん</div>
-        <% elsif admin_signed_in? %>
-          <div class="mb-2">こんにちは <span class="font-weight-bold text-danger h5">管理者</span> さん</div>
+        <div class="row mr-1 mt-3 mb-2">
+        <% if admin_signed_in? %>
         <% else %>
-          <div class="mb-2">こんにちは <span class="font-weight-bold h5" >ゲスト</span> さん</div>
+          <div class="col-xs-6 text-center">
+            <%= form_with url:users_search_path, method: :get, local: true do |f| %>
+              <%= f.text_field 'search[value]' %>
+              <%= f.select 'search[model]', options_for_select({ "アイデア名" => "post", "アイデア タグ" => "tag", "アイデア募集名" => "invite", "アイデア募集 タグ" => "invite_tag" }) %>
+              <%= f.submit :"検索" %>
+            <% end %>
+          </div>
+        <% end %>
+        <% if user_signed_in? %>
+          <div>こんにちは <span class="font-weight-bold text-info h5"><%= current_user.name %></span> さん</div>
+        <% elsif admin_signed_in? %>
+          <div>こんにちは <span class="font-weight-bold text-danger h5">管理者</span> さん</div>
+        <% else %>
+          <div>こんにちは <span class="font-weight-bold h5" >ゲスト</span> さん</div>
         <% end %>
         </div>
         <div class="row">
