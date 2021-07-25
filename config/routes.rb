@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users, controllers: {
     sessions:      'users/sessions',
     passwords:     'users/passwords',
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
   get "/about" => "users/homes#about"
 
   namespace :users do
+    get "/search" => "searchs#search"
     resources :posts do
       resources:post_comments, only: [:create, :destroy]
       resource :likes, only: [:create, :destroy]
