@@ -12,7 +12,6 @@
             <%= form_with url:users_search_path, method: :get, local: true do |f| %>
               <%= f.text_field 'search[value]' %>
               <%= f.select 'search[model]', options_for_select({ "アイデア名" => "post", "アイデア タグ" => "tag", "アイデア募集名" => "invite", "アイデア募集 タグ" => "invite_tag" }) %>
-              <%= f.select 'search[how]', options_for_select({ "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical"  }) %>
               <%= f.submit :"検索" %>
             <% end %>
           </div>
