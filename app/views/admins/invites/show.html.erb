@@ -6,7 +6,7 @@
   <div class="row d-flex">
     <h5 class="col-6">
       <%= attachment_image_tag @invite.user, :user_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %>
-      <%= link_to @invite.user.name, users_user_path(@invite.user) %>
+      <%= link_to @invite.user.name, admins_user_path(@invite.user) %>
     </h5>
   </div>
   <div class="row">
