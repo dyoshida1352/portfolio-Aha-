@@ -8,18 +8,17 @@
             <tr>
               <th>アイデア募集名</th>
               <th>ユーザー名</th>
-              <th></th>
-              <th colspan=5></th>
+              <th>その他</th>
+              <th colspan=4></th>
             </tr>
           </thead>
           <tbody>
             <% @invites.each do |invite| %>
             <tr>
-              <td><%= link_to invite.invite_name, users_invite_path(invite) %></td>
-              <td><%= link_to invite.user.name, users_user_path(invite.user) %></td>
+              <td><%= link_to invite.invite_name, admins_invite_path(invite) %></td>
+              <td><%= link_to invite.user.name, admins_user_path(invite.user) %></td>
               <td><%= invite.created_at.to_s(:datetime_ymd) %></td>
-              <td><%= invite.invite_comments.count %>コメント</td>
-              <td><%= render "tag", invite: invite %></td>
+              <td>コメント数：<%= invite.invite_comments.count %></td>
             </tr>
             <% end %>
           </tbody>

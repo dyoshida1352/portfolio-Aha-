@@ -9,7 +9,7 @@
   		<%= date_format(invite_comment.created_at) %>
   	</td>
   	<td><%= invite_comment.invite_comment %></td>
-  	<% if current_user == invite_comment_user %>
+  	<% if current_user == invite_comment_user || current_admin %>
     	<td><%= link_to 'Destroy', users_invite_invite_comment_path(invite_comment.invite_id, invite_comment.id), class: 'btn btn-danger', method: :delete, remote: true %></td>
   	<% end %>
   </tr>

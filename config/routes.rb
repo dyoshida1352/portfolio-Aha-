@@ -36,4 +36,10 @@ Rails.application.routes.draw do
 
   end
 
+  namespace :admins do
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
+    resources :posts, only: [:index, :show, :edit, :update, :destroy]
+    resources :invites, only: [:index, :show, :edit, :update, :destroy]
+  end
+
 end

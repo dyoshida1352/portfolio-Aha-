@@ -17,8 +17,15 @@ class Users::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.page(params[:page]).per(8)
-    @post_count = Post.count
+    if params[:user_id]
+      @posts = Post.where(user_id: params[:user_id]).page(params[:page]).per(8)
+    elsif params[:like_id]
+      likes = Like.where(user_id: current_user.id).pluck(:post_id)
+      @like_post = Post.includes(:likes).find(likes)
+      @posts = Kaminari.paginate_array(@like_post).page(params[:page]).per(8)
+    else
+      @posts = Post.all.page(params[:page]).per(8)
+    end
   end
 
   def show

@@ -17,8 +17,11 @@ class Users::InvitesController < ApplicationController
   end
 
   def index
-    @invites = Invite.all.page(params[:page]).per(8)
-    @invite_count = Invite.count
+    if params[:user_id]
+      @invites = Invite.where(user_id: params[:user_id]).page(params[:page]).per(8)
+    else
+      @invites = Invite.all.page(params[:page]).per(8)
+    end
   end
 
   def show
