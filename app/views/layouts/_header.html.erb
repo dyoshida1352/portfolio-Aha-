@@ -38,8 +38,8 @@
           <% elsif admin_signed_in? %>
           <div class="d-flex">
             <div class="float"><%= link_to 'ユーザー一覧',admins_users_path,class: 'nav-link text-dark' %></div>
-            <div class="float"><%= link_to 'アイデア一覧',users_posts_path,class: 'nav-link text-dark' %></div>
-            <div class="float"><%= link_to 'アイデア募集一覧',root_path,class: 'nav-link text-dark' %></div>
+            <div class="float"><%= link_to 'アイデア一覧',admins_posts_path,class: 'nav-link text-dark' %></div>
+            <div class="float"><%= link_to 'アイデア募集一覧',admins_invites_path,class: 'nav-link text-dark' %></div>
             <div class="float"><%= link_to 'ログアウト',destroy_admin_session_path,method: :delete,class: 'nav-link text-dark' %></div>
           </div>
           <% else %>

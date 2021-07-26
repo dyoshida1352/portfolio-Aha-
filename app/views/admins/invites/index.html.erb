@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row mt-4 mb-4">
+    <div class="col-md-12 align-ceter">
+      <h2>アイデア募集一覧</h2><span>(全<%= @invites.count %>件)</span>
+      <div class="col-md-8 offset-md-1">
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th>アイデア募集名</th>
+              <th>ユーザー名</th>
+              <th>その他</th>
+              <th colspan=4></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @invites.each do |invite| %>
+            <tr>
+              <td><%= link_to invite.invite_name, admins_invite_path(invite) %></td>
+              <td><%= link_to invite.user.name, admins_user_path(invite.user) %></td>
+              <td><%= invite.created_at.to_s(:datetime_ymd) %></td>
+              <td>コメント数：<%= invite.invite_comments.count %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center"> <!-- ページング機能　-->
+      <%= paginate @invites %>
+    </div>
+  </div>
+</div>
