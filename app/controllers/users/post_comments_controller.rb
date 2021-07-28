@@ -1,5 +1,5 @@
 class Users::PostCommentsController < ApplicationController
-	before_action :authenticate_user!, {only: [:create]}
+	before_action :authenticate_user_and_admin, only: [:create, :destroy]
 
   def create
     @post = Post.find(params[:post_id])
@@ -20,6 +20,14 @@ class Users::PostCommentsController < ApplicationController
   private
 	def post_comment_params
 		params.require(:post_comment).permit(:post_comment)
+	end
+
+	def authenticate_user_and_admin
+		if user_signed_in?
+			authenticate_user!
+		elsif admin_signed_in?
+			authenticate_admin!
+		end
 	end
 
 end

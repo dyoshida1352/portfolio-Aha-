@@ -14,11 +14,11 @@ class Users::SearchsController < ApplicationController
     if model == 'post'
       Post.where("post_name LIKE ?", "%#{value}%")
     elsif model == 'tag'
-      Post.includes(:tag_relationships, :tags).where(tags: {tag_name: value})
+      Post.joins(:tag_relationships, :tags).where("tags.tag_name like ?", "%#{value}%" )
     elsif model == 'invite'
       Invite.where("invite_name LIKE ?", "%#{value}%")
     elsif model == 'invite_tag'
-      Invite.includes(:invite_tag_relationships, :invite_tags).where(invite_tags: {invite_tag_name: value})
+      Invite.joins(:invite_tag_relationships, :invite_tags).where("invite_tags.invite_tag_name like ?", "%#{value}%" )
     end
   end
 
