@@ -22,3 +22,35 @@
 
 /*いいね青いハート*/
 .heart_blue{color:#528fff;}
+
+
+// フラッシュメッセージ
+.flash-notice {
+  color: #808080;
+  background-color: #adffad;
+  font-size: 15px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.flash-success {
+  color: #808080;
+  background-color: #adffad;
+  font-size: 15px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.flash-alert {
+  color: #808080;
+  background-color: #ffc1c1;
+  font-size: 15px;
+  line-height: 30px;
+  text-align: center;
+}
+
+// デバイスエラーメッセージ
+#error_explanation {
+  color: #808080;
+  background: #ffc1c1;
+}

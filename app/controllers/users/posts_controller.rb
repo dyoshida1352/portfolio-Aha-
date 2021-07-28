@@ -12,6 +12,7 @@ class Users::PostsController < ApplicationController
     tag_list = params[:post][:tag_ids].split(',')
     if @post.save
       @post.save_tags(tag_list)
+      flash[:notice] = "アイデアを投稿しました"
       redirect_to users_posts_path
     else
       render :new
@@ -52,16 +53,20 @@ class Users::PostsController < ApplicationController
     tag_list = params[:post][:tag_ids].split(',')
     if @post.update(post_params)
       @post.save_tags(tag_list)
+      flash[:notice] = "アイデア投稿の内容を変更しました"
       redirect_to users_post_path(@post)
     else
+      tag_list = params[:post][:tag_ids].split(',')
       render :edit
     end
   end
 
   def destroy
     post = Post.find(params[:id])
-    post.destroy
-    redirect_to users_posts_path
+    if post.destroy
+      flash[:alert] = "アイデア投稿を削除しました"
+      redirect_to users_posts_path
+    end
   end
 
   private
