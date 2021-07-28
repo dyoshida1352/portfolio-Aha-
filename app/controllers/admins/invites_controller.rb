@@ -20,6 +20,7 @@ class Admins::InvitesController < ApplicationController
 
   def update
     @invite = Invite.find(params[:id])
+    @invite_tag_list =@invite.invite_tags.pluck(:invite_tag_name).join(",")
     invite_tag_list = params[:invite][:invite_tag_ids].split(',')
     if @invite.update(post_params)
       flash[:notice] = "アイデア募集の内容を変更しました"

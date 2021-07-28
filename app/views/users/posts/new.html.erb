@@ -1,6 +1,7 @@
 <div class="container">
   <h2 class="mt-4 mb-4">アイデア投稿</h2>
-  <%= form_with model: [:users, @new_post], local: true do |f| %>
+  <%= render "layouts/error_messages", resource: @post %>
+  <%= form_with model: [:users, @post], local: true do |f| %>
     <div class="row mb-3">
       <div class="col-3 offset-2"><%= f.label :アイデア画像 %></div>
       <div class="col-3"><%= f.attachment_field :post_image %></div>

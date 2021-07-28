@@ -2,7 +2,7 @@ class Users::InvitesController < ApplicationController
   before_action :authenticate_user!, {only: [:new, :create, :edit, :update, :destroy]}
 
   def new
-    @new_invite = Invite.new
+    @invite = Invite.new
   end
 
   def create
@@ -42,6 +42,7 @@ class Users::InvitesController < ApplicationController
 
   def update
     @invite = Invite.find(params[:id])
+    @invite_tag_list =@invite.invite_tags.pluck(:invite_tag_name).join(",")
     invite_tag_list = params[:invite][:invite_tag_ids].split(',')
     if @invite.update(invite_params)
       @invite.save_invite_tags(invite_tag_list)

@@ -20,6 +20,7 @@ class Admins::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    @tag_list =@post.tags.pluck(:tag_name).join(",")
     tag_list = params[:post][:tag_ids].split(',')
     if @post.update(post_params)
       @post.save_tags(tag_list)
