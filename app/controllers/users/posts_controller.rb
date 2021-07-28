@@ -1,4 +1,6 @@
 class Users::PostsController < ApplicationController
+  before_action :authenticate_user!, {only: [:new, :create, :edit, :update, :destroy]}
+
   def new
     @new_post = Post.new
   end
@@ -23,6 +25,10 @@ class Users::PostsController < ApplicationController
       likes = Like.where(user_id: current_user.id).pluck(:post_id)
       @like_post = Post.includes(:likes).find(likes)
       @posts = Kaminari.paginate_array(@like_post).page(params[:page]).per(8)
+    elsif params[:tag_id]
+      @tag = Tag.find(params[:tag_id])
+      @tag_post = @tag.posts.all
+      @posts = Kaminari.paginate_array(@tag_post).page(params[:page]).per(8)
     else
       @posts = Post.all.page(params[:page]).per(8)
     end

@@ -1,4 +1,6 @@
 class Users::InviteCommentsController < ApplicationController
+	before_action :authenticate_user!, {only: [:create]}
+
   def create
     @invite = Invite.find(params[:invite_id])
 		@invite_comment = InviteComment.new(invite_comment_params)

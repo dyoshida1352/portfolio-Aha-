@@ -1,4 +1,5 @@
 class Admins::InvitesController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     if params[:user_id]

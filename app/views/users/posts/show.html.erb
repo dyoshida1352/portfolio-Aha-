@@ -33,8 +33,10 @@
   <table class="post_comments table table-hover table-inverse">
     <%= render 'users/post_comments/comment', post: @post %>
   </table>
-  <%= form_with model:[:users, @post, @post_comment] do |f| %>
-    <%= f.text_area :post_comment, size:"90x5" %><br>
-    <%= f.submit 'コメントする'%>
+  <% if user_signed_in? %>
+    <%= form_with model:[:users, @post, @post_comment] do |f| %>
+      <%= f.text_area :post_comment, size:"90x5" %><br>
+      <%= f.submit 'コメントする'%>
+    <% end %>
   <% end %>
 </div>

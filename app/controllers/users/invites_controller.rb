@@ -1,4 +1,6 @@
 class Users::InvitesController < ApplicationController
+  before_action :authenticate_user!, {only: [:new, :create, :edit, :update, :destroy]}
+
   def new
     @new_invite = Invite.new
   end

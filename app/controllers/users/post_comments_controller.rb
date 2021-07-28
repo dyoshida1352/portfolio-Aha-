@@ -1,4 +1,6 @@
 class Users::PostCommentsController < ApplicationController
+	before_action :authenticate_user!, {only: [:create]}
+
   def create
     @post = Post.find(params[:post_id])
 		@post_comment = PostComment.new(post_comment_params)

@@ -1,4 +1,5 @@
 class Users::UsersController < ApplicationController
+  before_action :authenticate_user!, {only: [:edit, :update, :quit, :destroy]}
 
   def show
     @user = User.find(params[:id])

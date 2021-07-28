@@ -28,8 +28,10 @@
   <table class="invite_comments table table-hover table-inverse">
     <%= render 'users/invite_comments/comment', invite: @invite %>
   </table>
-  <%= form_with model:[:users, @invite, @invite_comment] do |f| %>
-    <%= f.text_area :invite_comment, size:"90x5" %><br>
-    <%= f.submit 'コメントする'%>
+  <% if user_signed_in? %>
+    <%= form_with model:[:users, @invite, @invite_comment] do |f| %>
+      <%= f.text_area :invite_comment, size:"90x5" %><br>
+      <%= f.submit 'コメントする'%>
+    <% end %>
   <% end %>
 </div>
