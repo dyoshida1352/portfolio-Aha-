@@ -1,57 +1,63 @@
-<header class="bg-light">
-  <div class="container">
-    <div class="row">
-      <div class="col-3">
-         <a class="navbar-brand p-3 text-dark" href="/">Aha!</a>
-      </div>
-      <div class="col-9 d-flex align-items-end justify-content-center flex-column">
-        <div class="row mr-1 mt-3 mb-2">
-        <% if admin_signed_in? %>
-        <% else %>
-          <div class="col-xs-6 text-center">
-            <%= form_with url:users_search_path, method: :get, local: true do |f| %>
-              <%= f.text_field 'search[value]' %>
-              <%= f.select 'search[model]', options_for_select({ "アイデア名" => "post", "アイデア タグ" => "tag", "アイデア募集名" => "invite", "アイデア募集 タグ" => "invite_tag" }) %>
-              <%= f.submit :"検索" %>
-            <% end %>
-          </div>
-        <% end %>
-        <% if user_signed_in? %>
-          <div>こんにちは <span class="font-weight-bold text-info h5"><%= current_user.name %></span> さん</div>
-        <% elsif admin_signed_in? %>
-          <div>こんにちは <span class="font-weight-bold text-danger h5">管理者</span> さん</div>
-        <% else %>
-          <div>こんにちは <span class="font-weight-bold h5" >ゲスト</span> さん</div>
-        <% end %>
+<header>
+  <nav class="">
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+          <a class="navbar-brand p-3 text-dark" href="/"><span>Aha!</span></a>
         </div>
-        <div class="row">
-          <% if user_signed_in? %>
-          <div class="d-flex">
-            <div class="float"><%= link_to 'アイデア投稿',new_users_post_path,class: 'btn btn-outline-danger mr-1' %></div>
-            <div class="float"><%= link_to 'アイデア募集',new_users_invite_path,class: 'btn btn-outline-success' %></div>
-            <div class="float"><%= link_to 'マイページ',users_user_path(id: current_user),class: 'nav-link text-dark' %></div>
-            <div class="float"><%= link_to 'Aha!について',about_path,class: 'nav-link text-dark' %></div>
-            <div class="float"><%= link_to 'アイデア一覧',users_posts_path,class: 'nav-link text-dark' %></div>
-            <div class="float"><%= link_to 'アイデア募集',users_invites_path,class: 'nav-link text-dark' %></div>
-            <div class="float"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,class: 'nav-link text-dark' %></div>
-          </div>
-          <% elsif admin_signed_in? %>
-          <div class="d-flex">
-            <div class="float"><%= link_to 'ユーザー一覧',admins_users_path,class: 'nav-link text-dark' %></div>
-            <div class="float"><%= link_to 'アイデア一覧',admins_posts_path,class: 'nav-link text-dark' %></div>
-            <div class="float"><%= link_to 'アイデア募集一覧',admins_invites_path,class: 'nav-link text-dark' %></div>
-            <div class="float"><%= link_to 'ログアウト',destroy_admin_session_path,method: :delete,class: 'nav-link text-dark' %></div>
-          </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="col-9">
+          <div class="row mr-1 mt-3 mb-2">
+          <% if admin_signed_in? %>
           <% else %>
-          <div class="d-flex">
-            <div class="float"><%= link_to 'Aha!について',about_path,class: 'nav-link text-dark' %></div>
-            <div class="float"><%= link_to 'アイデア一覧',users_posts_path,class: 'nav-link text-dark' %></div>
-            <div class="float"><%= link_to 'アイデア募集',users_invites_path,class: 'nav-link text-dark' %></div>
-            <div class="float"><%= link_to 'ログイン/新規登録',new_user_session_path,class: 'nav-link text-dark'%></div>
-          </div>
+            <div class="col-xs-6 text-center">
+              <%= form_with url:users_search_path, method: :get, local: true do |f| %>
+                <%= f.text_field 'search[value]' %>
+                <%= f.select 'search[model]', options_for_select({ "アイデア名" => "post", "アイデア タグ" => "tag", "アイデア募集名" => "invite", "アイデア募集 タグ" => "invite_tag" }) %>
+                <%= f.submit :"検索" %>
+              <% end %>
+            </div>
           <% end %>
+          <% if user_signed_in? %>
+            <div>こんにちは <span class="font-weight-bold h5"><%= current_user.name %></span> さん</div>
+            <div class="float"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,class: 'nav-link text-dark' %></div>
+          <% elsif admin_signed_in? %>
+            <div>こんにちは <span class="font-weight-bold text-danger h5">管理者</span> さん</div>
+            <div class="float"><%= link_to 'ログアウト',destroy_admin_session_path,method: :delete,class: 'nav-link text-dark' %></div>
+          <% else %>
+            <div>こんにちは <span class="font-weight-bold h5" >ゲスト</span> さん</div>
+            <div class="float"><%= link_to 'ログイン',new_user_session_path,class: 'text-dark'%></div>
+            <div class="float"><%= link_to '新規登録',new_user_registration_path,class: 'text-dark'%></div>
+          <% end %>
+          </div>
         </div>
+      </div>
+      <div class="row alin">
+        <% if user_signed_in? %>
+        <div class="d-flex">
+          <div class="float"><%= link_to 'アイデア投稿',new_users_post_path,class: 'btn btn-outline-danger mr-1' %></div>
+          <div class="float"><%= link_to 'アイデア募集',new_users_invite_path,class: 'btn btn-outline-success' %></div>
+          <div class="float"><%= link_to 'マイページ',users_user_path(id: current_user),class: 'nav-link text-dark' %></div>
+          <div class="float"><%= link_to 'Aha!について',about_path,class: 'nav-link text-dark' %></div>
+          <div class="float"><%= link_to 'アイデア一覧',users_posts_path,class: 'nav-link text-dark' %></div>
+          <div class="float"><%= link_to 'アイデア募集',users_invites_path,class: 'nav-link text-dark' %></div>
+        </div>
+        <% elsif admin_signed_in? %>
+        <div class="d-flex">
+          <div class="float"><%= link_to 'ユーザー一覧',admins_users_path,class: 'nav-link text-dark' %></div>
+          <div class="float"><%= link_to 'アイデア一覧',admins_posts_path,class: 'nav-link text-dark' %></div>
+          <div class="float"><%= link_to 'アイデア募集一覧',admins_invites_path,class: 'nav-link text-dark' %></div>
+        </div>
+        <% else %>
+        <div class="d-flex">
+          <div class="float"><%= link_to 'Aha!について',about_path,class: 'nav-link text-dark' %></div>
+          <div class="float"><%= link_to 'アイデア一覧',users_posts_path,class: 'nav-link text-dark' %></div>
+          <div class="float"><%= link_to 'アイデア募集',users_invites_path,class: 'nav-link text-dark' %></div>
+        </div>
+        <% end %>
       </div>
     </div>
-  </div>
+  </nav>
 </header>
