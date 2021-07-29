@@ -1,0 +1,8 @@
+<div class="container mt-5">
+	<h2 class="mt-4 mb-5"><%= @user.name %>　のフォローユーザー</h2>
+  <% if @users.exists? %>
+    <%= render 'user_index', users: @users %>
+  <% else %>
+    <p>ユーザーはいません</p>
+  <% end %>
+</div>

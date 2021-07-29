@@ -1,0 +1,16 @@
+<% invite.invite_comments.each do |invite_comment| %>
+  <% invite_comment_user = invite_comment.user %>
+  <tr>
+  	<td>
+  		<%= link_to users_user_path(invite_comment_user), class: "user_#{invite_comment_user.id}" do %>
+    		<%= attachment_image_tag invite_comment_user, :user_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %><br>
+    		<%= invite_comment_user.name %>
+  		<% end %>
+  		<%= date_format(invite_comment.created_at) %>
+  	</td>
+  	<td><%= invite_comment.invite_comment %></td>
+  	<% if current_user == invite_comment_user || current_admin %>
+    	<td><%= link_to '削除する', users_invite_invite_comment_path(invite_comment.invite_id, invite_comment.id), class: 'btn btn-danger', method: :delete, remote: true %></td>
+  	<% end %>
+  </tr>
+<% end %>

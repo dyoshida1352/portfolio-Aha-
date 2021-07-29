@@ -1,0 +1,3 @@
+$("#invite_<%= @invite.id %> .invite-comments-count").html("コメント数：<%= @invite.invite_comments.count %>");
+$(".invite_comments").html("<%= j(render 'users/invite_comments/comment', invite: @invite) %>");
+$("#invite_comment_invite_comment").val("");

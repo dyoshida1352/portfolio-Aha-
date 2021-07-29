@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <h2 class="mt-4 mb-5 text-center">ユーザー情報編集</h2>
+  <%= render "layouts/error_messages", resource: @user %>
+  <%= form_with model: [:admins, @user], local: true do |f| %>
+    <div class="row mb-3 d-flex justify-content-center">
+      <div class="col-3"><%= f.label :ユーザー画像 %></div>
+      <div class="col-3"><%= f.attachment_field :user_image %></div>
+    </div>
+    <div class="row mb-3 d-flex justify-content-center">
+      <div class="col-3"><%= f.label :ユーザーネーム %></div>
+      <div class="col-3"><%= f.text_field :name, class: "form-control", autofocus: true %></div>
+    </div>
+    <div class="row mb-3 d-flex justify-content-center">
+      <div class="col-3"><%= f.label :年代 %></div>
+      <div class="col-3"><%= f.select :age, User.ages.keys, {} %></div>
+    </div>
+    <div class="row mb-3 d-flex justify-content-center">
+      <div class="col-3"><%= f.label :メールアドレス %></div>
+      <div class="col-3"><%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %></div>
+    </div>
+    <div class="row mb-3 d-flex justify-content-center">
+      <div class="col-2 offset-1"><%= f.submit "変更を保存", class: "btn btn-success" %></div>
+      <div class="col-2"><%= link_to "削除する", admins_user_path(@user), method: :delete, "data-confirm" => "本当に削除してもよろしいですか？", class: "glyphicon glyphicon-tint btn btn-danger" %></div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,83 @@
+<div class="container mt-5">
+  <% if @model == "post" %>
+  <h2 class="mt-4 mb-5">アイデア投稿： '<%= @value %>' の検索結果<span class="h4"> (全<%= @datas.count %>件)</span></h2>
+  <div class="row mt-4 align-center">
+    <% @datas.each do |post| %>
+    <div class="col-md-3 border border-secondary mr-4 mb-3">
+      <div class="d-flex justify-content-center">
+        <div>
+        <%= attachment_image_tag post, :post_image, size: "206x150", fallback: "no_post_image.jpg" %>
+        </div>
+      </div>
+      <p class="text-center"><%= link_to post.post_name, users_post_path(post) %></p>
+      <p><%= post.likes.count %>いいね　　<%= post.post_comments.count %>コメント</p>
+      <p><%= render "users/posts/tag", post: post %></p>
+      <p><%= post.created_at.to_s(:datetime_ymd) %>　<%= link_to post.user.name, users_user_path(post.user) %></p>
+    </div>
+    <% end %>
+  </div>
+  <% elsif @model == "tag" %>
+  <h2 class="mt-4 mb-5">アイデア投稿 タグ： '<%= @value %>' の検索結果<span class="h4"> (全<%= @datas.count %>件)</span></h2>
+  <div class="row mt-4 align-center">
+    <% @datas.each do |post| %>
+    <div class="col-md-3 border border-secondary mr-4 mb-3">
+      <div class="d-flex justify-content-center">
+        <div>
+        <%= attachment_image_tag post, :post_image, size: "206x150", fallback: "no_post_image.jpg" %>
+        </div>
+      </div>
+      <p class="text-center"><%= link_to post.post_name, users_post_path(post) %></p>
+      <p><%= post.likes.count %>いいね　　<%= post.post_comments.count %>コメント</p>
+      <p><%= render "users/posts/tag", post: post %></p>
+      <p><%= post.created_at.to_s(:datetime_ymd) %>　<%= link_to post.user.name, users_user_path(post.user) %></p>
+    </div>
+    <% end %>
+  </div>
+  <% elsif @model == "invite" %>
+  <h2 class="mt-4 mb-5">アイデア募集： '<%= @value %>' の検索結果<span class="h4"> (全<%= @datas.count %>件)</span></h2>
+  <table class="table table-hover table-inverse">
+    <thead>
+      <tr>
+        <th>アイデア募集名</th>
+        <th>ユーザー名</th>
+        <th></th>
+        <th colspan=5></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @datas.each do |invite| %>
+      <tr>
+        <td><%= link_to invite.invite_name, users_invite_path(invite) %></td>
+        <td><%= link_to invite.user.name, users_user_path(invite.user) %></td>
+        <td><%= invite.created_at.to_s(:datetime_ymd) %></td>
+        <td><%= invite.invite_comments.count %>コメント</td>
+        <td><%= render "users/invites/tag", invite: invite %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% elsif @model == "invite_tag" %>
+  <h2 class="mt-4 mb-5">アイデア募集 タグ： '<%= @value %>' の検索結果<span class="h4"> (全<%= @datas.count %>件)</span></h2>
+  <table class="table table-hover table-inverse">
+    <thead>
+      <tr>
+        <th>アイデア募集名</th>
+        <th>ユーザー名</th>
+        <th></th>
+        <th colspan=5></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @datas.each do |invite| %>
+      <tr>
+        <td><%= link_to invite.invite_name, users_invite_path(invite) %></td>
+        <td><%= link_to invite.user.name, users_user_path(invite.user) %></td>
+        <td><%= invite.created_at.to_s(:datetime_ymd) %></td>
+        <td><%= invite.invite_comments.count %>コメント</td>
+        <td><%= render "users/invites/tag", invite: invite %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+</div>
