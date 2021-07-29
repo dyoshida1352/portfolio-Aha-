@@ -32,7 +32,7 @@ div,p,h2 {
 
 // ヘッダー背景画像
 .header-bg-image {
-  background-image: image-url('header_bg_image3.jpg');
+  background-image: image-url('header_bg_image.jpg');
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -52,14 +52,30 @@ main {
 
 // bodyの背景色
 .body-bg-color {
-  background-color: #FDF5E6;
+  background-color: white;
 }
 
 // フッターの背景色
 .footer-bg-color {
-  background-color: white;
+  background-color: #FDF5E6;
 }
 
+// アバウトページの背景画像
+.about-bg-image1 {
+  background-image: image-url('about_bg_image1.jpg');
+  background-size: contain;
+  background-position: center;
+  width: 100%;
+  height: 400px;
+}
+
+.about-bg-image2 {
+  background-image: image-url('about_bg_image2.jpg');
+  background-size: contain;
+  background-position: center;
+  width: 100%;
+  height: 570px;
+}
 
 // いいね赤いハート
 .heart_red{color:#e54747;}

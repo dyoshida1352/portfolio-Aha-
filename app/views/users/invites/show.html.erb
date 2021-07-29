@@ -29,9 +29,11 @@
     <%= render 'users/invite_comments/comment', invite: @invite %>
   </table>
   <% if user_signed_in? %>
+  <div class="mb-5  d-flex justify-content-end">
     <%= form_with model:[:users, @invite, @invite_comment] do |f| %>
-      <%= f.text_area :invite_comment, size:"90x5" %><br>
-      <%= f.submit 'コメントする'%>
+      <%= f.text_area :invite_comment, size:"65x3", class: "form-control" %><br>
+      <p class="text-right"><%= f.submit 'コメントする', class: "btn btn-warning" %></p>
     <% end %>
+  </div>
   <% end %>
 </div>

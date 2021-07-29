@@ -1,26 +1,26 @@
-<div class="container">
-  <h2 class="mt-4 mb-4 ">アイデア募集</h2>
+<div class="container mt-5">
+  <h2 class="mt-4 mb-5 text-center">アイデア募集</h2>
   <%= render "layouts/error_messages", resource: @invite %>
   <%= form_with model: [:users, @invite], local: true do |f| %>
-    <div class="row mb-3">
-      <div class="col-3 offset-2"><%= f.label :アイデア募集画像 %></div>
+    <div class="row mb-3 d-flex justify-content-center">
+      <div class="col-3"><%= f.label :アイデア募集画像 %></div>
       <div class="col-3"><%= f.attachment_field :invite_image %></div>
     </div>
-    <div class="row mb-3">
+    <div class="row mb-3 d-flex justify-content-center">
       <div class="col-3 offset-2"><%= f.label :アイデア募集名 %></div>
-      <div class="col-3"><%= f.text_field :invite_name, class: "form-control", autofocus: true %></div>
+      <div class="col-5"><%= f.text_field :invite_name, class: "form-control", autofocus: true %></div>
     </div>
-    <div class="row mb-3">
+    <div class="row mb-3 d-flex justify-content-center">
       <div class="col-3 offset-2"><%= f.label :タグ %></div>
       <div class="col-5"><%= f.text_field :invite_tag_ids, class: "form-control", id:'invite_tag_ids',\
                             placeholder: "タグを複数つける場合は','で区切ってください" %></div>
     </div>
-    <div class="row mb-3">
+    <div class="row mb-3 d-flex justify-content-center">
       <div class="col-3 offset-2"><%= f.label :アイデア募集説明 %></div>
-      <div class="col-3"><%= f.text_area :invite_description, class: "form-control", autofocus: true %></div>
+      <div class="col-5"><%= f.text_area :invite_description, size:"80x12", class: "form-control", autofocus: true %></div>
     </div>
-    <div class="row mb-3">
-      <div class="col-2 offset-5"><%= f.submit "投稿", class: "btn btn-success" %></div>
+    <div class="row mb-3 d-flex justify-content-center">
+      <div class="col-2 offset-2"><%= f.submit "投稿する", class: "btn btn-success" %></div>
     </div>
   <% end %>
 </div>
