@@ -30,7 +30,7 @@
       <div class="col-8 text-center">
         <%= form_with url:users_search_path, method: :get, local: true do |f| %>
           <tb><%= f.text_field 'search[value]', class: "col-6" %></tb>
-          <tb><%= f.select 'search[model]', options_for_select({ "アイデア名" => "post", "アイデア タグ" => "tag", "アイデア募集名" => "invite", "アイデア募集 タグ" => "invite_tag" }), class: "col-2" %></tb>
+          <tb><%= f.select 'search[model]', options_for_select({ "アイデア投稿" => "post", "アイデア投稿 タグ" => "tag", "アイデア募集" => "invite", "アイデア募集 タグ" => "invite_tag" }), class: "col-2" %></tb>
           <tb><%= f.submit "検索", class: "btn-secondary" %></tb>
         <% end %>
       </div>
@@ -40,15 +40,15 @@
     <% if user_signed_in? %>
       <tb><%= link_to 'マイページ',users_user_path(id: current_user),class: 'nav-link text-dark fas fa-user-alt' %></tb>
       <tb class="mr-3 ml-3"><%= link_to 'Aha!について',about_path,class: 'nav-link text-dark fas fa-smile' %></tb>
-      <tb class="mr-3"><%= link_to 'アイデア一覧',users_posts_path,class: 'nav-link text-dark fas fa-lightbulb' %></tb>
+      <tb class="mr-3"><%= link_to 'アイデア投稿一覧',users_posts_path,class: 'nav-link text-dark fas fa-lightbulb' %></tb>
       <tb><%= link_to 'アイデア募集一覧',users_invites_path,class: 'nav-link text-dark fas fa-edit' %></tb>
     <% elsif admin_signed_in? %>
       <tb><%= link_to 'ユーザー一覧',admins_users_path,class: 'nav-link text-dark fas fa-user-alt' %></tb>
-      <tb class="mr-3 ml-3"><%= link_to 'アイデア一覧',admins_posts_path,class: 'nav-link text-dark fas fa-lightbulb' %></tb>
+      <tb class="mr-3 ml-3"><%= link_to 'アイデア投稿一覧',admins_posts_path,class: 'nav-link text-dark fas fa-lightbulb' %></tb>
       <tb><%= link_to 'アイデア募集一覧',admins_invites_path,class: 'nav-link text-dark fas fa-edit' %></tb>
     <% else %>
       <tb><%= link_to 'Aha!について',about_path,class: 'nav-link text-dark fas fa-smile' %></tb>
-      <tb class="mr-3 ml-3"><%= link_to 'アイデア一覧',users_posts_path,class: 'nav-link text-dark fas fa-lightbulb' %></tb>
+      <tb class="mr-3 ml-3"><%= link_to 'アイデア投稿一覧',users_posts_path,class: 'nav-link text-dark fas fa-lightbulb' %></tb>
       <tb><%= link_to 'アイデア募集一覧',users_invites_path,class: 'nav-link text-dark fas fa-edit' %></tb>
     <% end %>
     </div>
