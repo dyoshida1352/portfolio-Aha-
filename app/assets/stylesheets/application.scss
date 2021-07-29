@@ -20,7 +20,7 @@
 // フォントの設定
 @font-face {
   font-family: 'GenEiMonoGothic-Regular';
-  src: url('/assets/GenEiMonoGothic-Regular.ttf') format("truetype");
+  src: asset_url('GenEiMonoGothic-Regular.ttf') format("truetype");
   font-weight: normal;
   font-style: normal;
 }
