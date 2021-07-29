@@ -17,10 +17,6 @@
 			<div class="col-2">アイデア投稿</div>
 			<div class="col-4"><%= link_to @user.posts.count, admins_posts_path(user_id: @user.id) %>件</div>
 		</div>
-		<div class="row mb-3" >
-			<div class="col-2">グッドアイデア</div>
-			<div class="col-4">件</div>
-		</div>
 		<div class="row mb-4" >
 			<div class="col-2">アイデア募集</div>
 			<div class="col-4"><%= link_to @user.invites.count, admins_invites_path(user_id: @user.id) %>件</div>
