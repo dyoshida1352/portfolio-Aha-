@@ -30,6 +30,37 @@ div,p,h2 {
 }
 
 
+// ヘッダー背景画像
+.header-bg-image {
+  background-image: image-url('header_bg_image3.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+}
+
+// フッターの固定
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+
+// bodyの背景色
+.body-bg-color {
+  background-color: #FDF5E6;
+}
+
+// フッターの背景色
+.footer-bg-color {
+  background-color: white;
+}
+
+
 // いいね赤いハート
 .heart_red{color:#e54747;}
 
