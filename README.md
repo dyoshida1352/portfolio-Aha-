@@ -27,11 +27,11 @@
 
 
 ## 設計書
-〜今後作成〜
+
 
 
 ## チャレンジ要素一覧
-<https://docs.google.com/spreadsheets/d/1npsVEhfoSZARNCDbuw-kGJZ13ESBh-d5W2VIusec5ok/edit#gid=0>
+<https://docs.google.com/spreadsheets/d/1w1JRVvr4GDS5W229Q0d8ttZO_YehTgSqpkVm6A53bDU/edit#gid=0>
 
 
 ## 開発環境
@@ -43,4 +43,4 @@
 
 
 ## 使用素材
-〜今後検討予定〜
+
