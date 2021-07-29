@@ -17,10 +17,23 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-/*いいね赤いハート*/
+// フォントの設定
+@font-face {
+  font-family: 'GenEiMonoGothic-Regular';
+  src: url('/assets/GenEiMonoGothic-Regular.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+div,p,h2 {
+  font-family: 'GenEiMonoGothic-Regular';
+}
+
+
+// いいね赤いハート
 .heart_red{color:#e54747;}
 
-/*いいね青いハート*/
+// いいね青いハート
 .heart_blue{color:#528fff;}
 
 
