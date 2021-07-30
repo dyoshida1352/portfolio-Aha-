@@ -1,4 +1,5 @@
 class Admins::InvitesController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     if params[:user_id]
@@ -19,8 +20,10 @@ class Admins::InvitesController < ApplicationController
 
   def update
     @invite = Invite.find(params[:id])
+    @invite_tag_list =@invite.invite_tags.pluck(:invite_tag_name).join(",")
     invite_tag_list = params[:invite][:invite_tag_ids].split(',')
     if @invite.update(post_params)
+      flash[:notice] = "アイデア募集の内容を変更しました"
       @invite.save_invite_tags(invite_tag_list)
       redirect_to admins_invite_path(@invite)
     else
@@ -30,8 +33,10 @@ class Admins::InvitesController < ApplicationController
 
   def destroy
     invite = Invite.find(params[:id])
-    invite.destroy
-    redirect_to admins_invites_path
+    if invite.destroy
+      flash[:alert] = "アイデア募集を削除しました"
+      redirect_to admins_invites_path
+    end
   end
 
   private

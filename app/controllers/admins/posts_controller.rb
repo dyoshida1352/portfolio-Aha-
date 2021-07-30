@@ -1,4 +1,5 @@
 class Admins::PostsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     if params[:user_id]
@@ -19,9 +20,11 @@ class Admins::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    @tag_list =@post.tags.pluck(:tag_name).join(",")
     tag_list = params[:post][:tag_ids].split(',')
     if @post.update(post_params)
       @post.save_tags(tag_list)
+      flash[:notice] = "アイデア投稿の内容を変更しました"
       redirect_to admins_post_path(@post)
     else
       render :edit
@@ -30,8 +33,10 @@ class Admins::PostsController < ApplicationController
 
   def destroy
     post = Post.find(params[:id])
-    post.destroy
-    redirect_to admins_posts_path
+    if post.destroy
+      flash[:alert] = "アイデア投稿を削除しました"
+      redirect_to admins_posts_path
+    end
   end
 
   private

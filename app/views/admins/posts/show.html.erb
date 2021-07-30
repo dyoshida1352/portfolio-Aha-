@@ -1,6 +1,6 @@
-<div class="container">
-  <h2 class="mt-4 mb-1"><%= @post.post_name %></h2>
-  <p class="mb-4"><%= @post.created_at.to_s(:datetime_ymd) %></p>
+<div class="container mt-5">
+  <h2 class="mt-4 mb-2"><%= @post.post_name %></h2>
+  <h5 class="mb-5"><%= @post.created_at.to_s(:datetime_ymd) %></h5>
   <%= link_to "編集する", edit_admins_post_path(@post), class:"btn btn-sm btn-success" %>
   <%= link_to "削除する", admins_post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-sm btn-danger" %>
   <div class="row d-flex">

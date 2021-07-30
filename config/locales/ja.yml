@@ -35,3 +35,19 @@ ja:
       over_x_years:
         one:   "1年以上"
         other: "%{count}年以上"
+
+  ja:
+  activerecord:
+    attributes:
+      user:
+        name: ユーザーネーム
+        age: 年代
+      post:
+        post_name: アイデア名
+        post_description: アイデア説明
+      invite:
+        invite_name: アイデア募集名
+        invite_description: アイデア募集説明
+    errors:
+     messages:
+       other_than:  「--」以外を選択してください

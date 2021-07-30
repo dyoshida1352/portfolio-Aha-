@@ -1,15 +1,18 @@
 class Users::InvitesController < ApplicationController
+  before_action :authenticate_user!, {only: [:new, :create, :edit, :update, :destroy]}
+
   def new
-    @new_invite = Invite.new
+    @invite = Invite.new
   end
 
   def create
     @new_invite = Invite.new
-    @invite = Invite.new(post_params)
+    @invite = Invite.new(invite_params)
     @invite.user_id = current_user.id
     invite_tag_list = params[:invite][:invite_tag_ids].split(',')
     if @invite.save
       @invite.save_invite_tags(invite_tag_list)
+      flash[:notice] = "アイデア募集を投稿しました"
       redirect_to users_invites_path
     else
       render :new
@@ -39,9 +42,11 @@ class Users::InvitesController < ApplicationController
 
   def update
     @invite = Invite.find(params[:id])
+    @invite_tag_list =@invite.invite_tags.pluck(:invite_tag_name).join(",")
     invite_tag_list = params[:invite][:invite_tag_ids].split(',')
-    if @invite.update(post_params)
+    if @invite.update(invite_params)
       @invite.save_invite_tags(invite_tag_list)
+      flash[:notice] = "アイデア募集の内容を変更しました"
       redirect_to users_invite_path(@invite)
     else
       render :edit
@@ -50,13 +55,15 @@ class Users::InvitesController < ApplicationController
 
   def destroy
     invite = Invite.find(params[:id])
-    invite.destroy
-    redirect_to users_invites_path
+    if invite.destroy
+      flash[:alert] = "アイデア募集を削除しました"
+      redirect_to users_invites_path
+    end
   end
 
   private
 
-  def post_params
+  def invite_params
     params.require(:invite).permit(:invite_name, :invite_description, :invite_image)
   end
 

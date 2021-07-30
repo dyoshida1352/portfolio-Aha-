@@ -1,3 +1,32 @@
-<div class="container">
-  <h1 class="text-center mt-4 mb-4" style="font-size-100px">Top</h1>
+<div class="container mt-5">
+  <div class="mt-4 mb-5">
+    <div>
+      <h4 class="text-center mb-4">人気のタグ</h4>
+      <div class="row d-flex justify-content-center h5">
+        <% @tags.each do |tag| %>
+          <%= link_to users_posts_path(tag_id: tag.id), class: "mr-2" do %>
+            <% if tag.posts.count > 0 %>
+              <div>#<%= tag.tag_name %>(<%= tag.posts.count %>)</div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <h4 class="text-center mb-4">新着アイデア</h4>
+  <div class="row">
+    <% @posts.each do |post| %>
+    <div class="col-md-3 border border-secondary mr-4 mb-3">
+      <div class="d-flex justify-content-center">
+        <div>
+        <%= attachment_image_tag post, :post_image, size: "206x150", fallback: "no_post_image.jpg" %>
+        </div>
+      </div>
+      <p class="text-center"><%= link_to post.post_name, users_post_path(post) %></p>
+      <p><%= post.likes.count %>いいね　　<%= post.post_comments.count %>コメント</p>
+      <p><%= render "users/posts/tag", post: post %></p>
+      <p><%= post.created_at.to_s(:datetime_ymd) %>　<%= link_to post.user.name, users_user_path(post.user) %></p>
+    </div>
+    <% end %>
+  </div>
 </div>

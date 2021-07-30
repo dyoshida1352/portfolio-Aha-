@@ -1,6 +1,6 @@
-<div class="container">
-  <h2 class="mt-4 mb-1"><%= @invite.invite_name %></h2>
-  <p class="mb-4"><%= @invite.created_at.to_s(:datetime_ymd) %></p>
+<div class="container mt-5">
+  <h2 class="mt-4 mb-2"><%= @invite.invite_name %></h2>
+  <h5 class="mb-5"><%= @invite.created_at.to_s(:datetime_ymd) %></h5>
   <div class="row d-flex">
     <h5 class="col-6">
       <%= attachment_image_tag @invite.user, :user_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %>
@@ -28,8 +28,12 @@
   <table class="invite_comments table table-hover table-inverse">
     <%= render 'users/invite_comments/comment', invite: @invite %>
   </table>
-  <%= form_with model:[:users, @invite, @invite_comment] do |f| %>
-    <%= f.text_area :invite_comment, size:"90x5" %><br>
-    <%= f.submit 'コメントする'%>
+  <% if user_signed_in? %>
+  <div class="mb-5  d-flex justify-content-end">
+    <%= form_with model:[:users, @invite, @invite_comment] do |f| %>
+      <%= f.text_area :invite_comment, size:"65x3", class: "form-control" %><br>
+      <p class="text-right"><%= f.submit 'コメントする', class: "btn btn-warning" %></p>
+    <% end %>
+  </div>
   <% end %>
 </div>

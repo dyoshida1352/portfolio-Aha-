@@ -1,4 +1,6 @@
 class Users::InviteCommentsController < ApplicationController
+	before_action :authenticate_user_and_admin, only: [:create, :destroy]
+
   def create
     @invite = Invite.find(params[:invite_id])
 		@invite_comment = InviteComment.new(invite_comment_params)
@@ -18,6 +20,14 @@ class Users::InviteCommentsController < ApplicationController
   private
 	def invite_comment_params
 		params.require(:invite_comment).permit(:invite_comment)
+	end
+
+	def authenticate_user_and_admin
+		if user_signed_in?
+			authenticate_user!
+		elsif admin_signed_in?
+			authenticate_admin!
+		end
 	end
 
 end
