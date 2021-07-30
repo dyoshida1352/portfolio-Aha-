@@ -3,9 +3,9 @@ class Admins::InvitesController < ApplicationController
 
   def index
     if params[:user_id]
-      @invites = Invite.where(user_id: params[:user_id]).page(params[:page]).per(10)
+      @invites = Invite.where(user_id: params[:user_id]).page(params[:page]).per(20)
     else
-      @invites = Invite.all.page(params[:page]).per(10)
+      @invites = Invite.all.page(params[:page]).per(20)
     end
   end
 
