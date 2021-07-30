@@ -4,9 +4,9 @@
       <h4 class="text-center mb-4">人気のタグ</h4>
       <div class="row d-flex justify-content-center h5">
         <% @tags.each do |tag| %>
-          <%= link_to users_posts_path(tag_id: tag.id), class: "mr-2" do %>
+          <%= link_to users_posts_path(tag_id: tag.id) do %>
             <% if tag.posts.count > 0 %>
-              <div>#<%= tag.tag_name %>(<%= tag.posts.count %>)</div>
+              <div class="btn btn-outline-secondary rounded-pill mr-2">#<%= tag.tag_name %>(<%= tag.posts.count %>)</div>
             <% end %>
           <% end %>
         <% end %>
