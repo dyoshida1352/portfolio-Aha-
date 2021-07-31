@@ -1,12 +1,12 @@
 <div class="container mt-5">
   <h2 class="mt-4 mb-2"><%= @invite.invite_name %></h2>
   <h5 class="mb-5"><%= @invite.created_at.to_s(:datetime_ymd) %></h5>
-  <div class="row d-flex">
+  <div class="row">
     <h5 class="col-6">
       <%= attachment_image_tag @invite.user, :user_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %>
       <%= link_to @invite.user.name, users_user_path(@invite.user) %>
     </h5>
-    <div class="col-6">
+    <div class="col-6  text-right">
     <% if @invite.user == current_user %>
       <td><%= link_to "編集する", edit_users_invite_path(@invite), class:"btn btn-sm btn-success" %></td>
       <td><%= link_to "削除する", users_invite_path(@invite), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-sm btn-danger" %></td>
@@ -14,13 +14,13 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-4" id="invite_<%= @invite.id %>">
-      <div><%= attachment_image_tag @invite, :invite_image, fallback: "no_invite_image.jpg", size: "250x200" %></div>
+    <div class="col-6" id="invite_<%= @invite.id %>">
+      <div class="mb-3"><%= attachment_image_tag @invite, :invite_image, fallback: "no_invite_image.jpg", size: "500x400" %></div>
       <p class="invite-comments-count">コメント数：<%= @invite.invite_comments.count %></p>
       <p><%= render "tag", invite: @invite %></p>
     </div>
     <div class="col-6">
-      <p>（アイデア募集説明）</p>
+      <p class="bg-light text-center">アイデア募集説明</p>
       <p><%= @invite.invite_description %></p>
     </div>
   </div>
