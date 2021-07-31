@@ -21,17 +21,17 @@ class Users::PostsController < ApplicationController
 
   def index
     if params[:user_id]
-      @posts = Post.where(user_id: params[:user_id]).page(params[:page]).per(8)
+      @posts = Post.where(user_id: params[:user_id]).page(params[:page]).per(9)
     elsif params[:like_id]
       likes = Like.where(user_id: current_user.id).pluck(:post_id)
       @like_post = Post.includes(:likes).find(likes)
-      @posts = Kaminari.paginate_array(@like_post).page(params[:page]).per(8)
+      @posts = Kaminari.paginate_array(@like_post).page(params[:page]).per(9)
     elsif params[:tag_id]
       @tag = Tag.find(params[:tag_id])
       @tag_post = @tag.posts.all
-      @posts = Kaminari.paginate_array(@tag_post).page(params[:page]).per(8)
+      @posts = Kaminari.paginate_array(@tag_post).page(params[:page]).per(9)
     else
-      @posts = Post.all.page(params[:page]).per(8)
+      @posts = Post.all.page(params[:page]).per(9)
     end
   end
 

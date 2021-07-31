@@ -10,7 +10,7 @@
   	</td>
   	<td><%= invite_comment.invite_comment %></td>
   	<% if current_user == invite_comment_user || current_admin %>
-    	<td><%= link_to '削除する', users_invite_invite_comment_path(invite_comment.invite_id, invite_comment.id), class: 'btn btn-danger', method: :delete, remote: true %></td>
+    	<td><%= link_to '×', users_invite_invite_comment_path(invite_comment.invite_id, invite_comment.id), class: 'btn btn-danger rounded-circle p-1', style: "width:2rem;height:2rem;", method: :delete, remote: true %></td>
   	<% end %>
   </tr>
 <% end %>
