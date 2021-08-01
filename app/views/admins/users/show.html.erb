@@ -2,7 +2,7 @@
 	<h2 class="head-line mt-4 mb-5"><%= @user.name %>　のユーザー情報</h2>
 	<%= link_to " 編集する", edit_admins_user_path, class: "glyphicon glyphicon-pencil btn btn-success" %>
 	<div class="row h5 d-flex align-items-center mb-4">
-		<div><%= attachment_image_tag @user, :user_image, fallback: "no_image.jpg", size: "250x200" %></div>
+		<div><%= attachment_image_tag @user, :user_image, fallback: "no_image.jpg", size: "250x200", class: "rounded-circle" %></div>
 	</div>
 	<div>
 		<div class="row mb-3" >

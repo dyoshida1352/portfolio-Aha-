@@ -1,7 +1,7 @@
 <div class="container">
 	<h2 class="head-line mt-4 mb-4"><%= @user.name %>　のページ</h2>
 	<div class="row h5 d-flex align-items-center mb-4">
-		<div><%= attachment_image_tag @user, :user_image, fallback: "no_image.jpg", size: "250x200" %></div>
+		<div><%= attachment_image_tag @user, :user_image, fallback: "no_image.jpg", size: "250x200", class: "rounded-circle" %></div>
 		<div class="col-2">
 		<% if user_signed_in? %>
 			<% if current_user != @user %>

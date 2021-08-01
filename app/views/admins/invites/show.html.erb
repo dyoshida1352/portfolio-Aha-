@@ -3,7 +3,7 @@
   <h5 class="mb-5"><%= @invite.created_at.to_s(:datetime_ymd) %></h5>
   <div class="row">
     <h5 class="col-6">
-      <%= attachment_image_tag @invite.user, :user_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %>
+      <%= attachment_image_tag @invite.user, :user_image, :fill, 70, 70, fallback: "no_image.jpg", size: "70x70", class: "rounded-circle" %>
       <%= link_to @invite.user.name, admins_user_path(@invite.user) %>
     </h5>
     <div class="col-6 text-right">
