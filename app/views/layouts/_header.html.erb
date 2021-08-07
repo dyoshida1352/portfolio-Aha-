@@ -9,7 +9,7 @@
         <tb class="col-8">こんにちは <span class="font-weight-bold text-light h5"><%= current_user.name %></span> さん</tb>
         <tb class="col-4"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,class: 'btn btn-outline-light' %></tb>
       <% elsif admin_signed_in? %>
-        <tb class="col-6">こんにちは <span class="font-weight-bold text-light h5">管理者</span> さん</tb>
+        <tb class="col-8">こんにちは <span class="font-weight-bold text-light h5">管理者</span> さん</tb>
         <tb class="col-4"><%= link_to 'ログアウト',destroy_admin_session_path,method: :delete,class: 'btn btn-outline-light' %></tb>
       <% else %>
         <tb class="col-md-6">こんにちは <span class="font-weight-bold text-light h5" >ゲスト</span> さん</tb>
