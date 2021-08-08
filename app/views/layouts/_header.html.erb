@@ -27,10 +27,10 @@
         <tb><%= link_to 'アイデア募集',new_users_invite_path,class: 'btn btn-success rounded-pill' %></tb>
       </div>
       <% end %>
-      <div class="col-xs-8 text-center">
+      <div class="col-md-8 text-center">
         <%= form_with url:users_search_path, method: :get, local: true do |f| %>
-          <tb><%= f.text_field 'search[value]', class: "col-xs-6" %></tb>
-          <tb><%= f.select 'search[model]', options_for_select({ "アイデア投稿" => "post", "アイデア投稿 タグ" => "tag", "アイデア募集" => "invite", "アイデア募集 タグ" => "invite_tag" }), class: "col-xs-2" %></tb>
+          <tb><%= f.text_field 'search[value]', class: "col-md-6" %></tb>
+          <tb><%= f.select 'search[model]', options_for_select({ "アイデア投稿" => "post", "アイデア投稿 タグ" => "tag", "アイデア募集" => "invite", "アイデア募集 タグ" => "invite_tag" }), size:"158×30", class: "col-md-2" %></tb>
           <tb><%= f.submit "検索", class: "btn-secondary" %></tb>
         <% end %>
       </div>
