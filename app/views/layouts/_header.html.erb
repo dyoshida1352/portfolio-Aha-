@@ -1,10 +1,10 @@
 <header class="header-bg-image">
   <div class="container">
     <div class="row">
-      <div class="col-xs-2">
+      <div class="col-md-2">
         <a class="navbar-brand p-3 text-light" href="/"><span class="h2">Aha!</span></a>
       </div>
-      <div class="col-xs-6 offset-sm-4 text-center d-flex align-items-center justify-content-end">
+      <div class="col-md-6 offset-sm-4 text-center d-flex align-items-center justify-content-end">
       <% if user_signed_in? %>
         <tb class="col-8">こんにちは <span class="font-weight-bold text-light h5"><%= current_user.name %></span> さん</tb>
         <tb class="col-4"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,class: 'btn btn-outline-light' %></tb>
