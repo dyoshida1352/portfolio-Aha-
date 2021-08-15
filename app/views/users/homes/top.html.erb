@@ -6,7 +6,7 @@
         <% @tags.each do |tag| %>
           <%= link_to users_posts_path(tag_id: tag.id) do %>
             <% if tag.posts.count > 0 %>
-              <div class="btn btn-outline-secondary rounded-pill mr-2">#<%= tag.tag_name %>(<%= tag.posts.count %>)</div>
+              <div class="btn btn-outline-secondary rounded-pill mb-2 mr-2">#<%= tag.tag_name %>(<%= tag.posts.count %>)</div>
             <% end %>
           <% end %>
         <% end %>
