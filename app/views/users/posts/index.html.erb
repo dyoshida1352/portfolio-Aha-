@@ -2,7 +2,7 @@
   <h2 class="mt-4 mb-5">アイデア投稿一覧<span class="h4"> (全<%= @posts.count %>件)</span></h2>
   <div class="row mt-4 mb-5">
     <% @posts.each do |post| %>
-    <div class="col-3 mr-5 mb-4 text-center" style="background-color: #FFDBC9;">
+    <div class="col-md-3 mr-3 ml-3 mb-4 text-center" style="background-color: #FFDBC9;">
       <p class="mt-2"><%= link_to post.post_name, users_post_path(post) %></p>
       <div class="mt-2 mb-2 d-flex justify-content-center">
         <div>
@@ -10,8 +10,8 @@
         </div>
       </div>
       <p>
-        <tb class="col-6"><%= post.likes.count %>いいね</tb>
-        <tb class="col-6"><%= post.post_comments.count %>コメント</tb>
+        <tb class="col-md-6"><%= post.likes.count %>いいね</tb>
+        <tb class="col-md-6"><%= post.post_comments.count %>コメント</tb>
       <p><%= render "tag", post: post %></p>
       <p class="text-right"><%= post.created_at.to_s(:datetime_ymd) %>　<%= link_to post.user.name, users_user_path(post.user) %></p>
     </div>
