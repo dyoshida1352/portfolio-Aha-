@@ -1,20 +1,20 @@
 <header class="header-bg-image">
   <div class="container">
     <div class="row">
-      <div class="col-2">
+      <div class="col-md-2">
         <a class="navbar-brand p-3 text-light" href="/"><span class="h2">Aha!</span></a>
       </div>
-      <div class="col-6 offset-4 text-center d-flex align-items-center justify-content-end">
+      <div class="col-md-6 offset-md-4 text-center d-flex align-items-center justify-content-end">
       <% if user_signed_in? %>
-        <tb class="col-8">こんにちは <span class="font-weight-bold text-light h5"><%= current_user.name %></span> さん</tb>
-        <tb class="col-4"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,class: 'btn btn-outline-light' %></tb>
+        <tb class="col-md-8">こんにちは <span class="font-weight-bold text-light h5"><%= current_user.name %></span> さん</tb>
+        <tb class="col-md-4"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,class: 'btn btn-outline-light' %></tb>
       <% elsif admin_signed_in? %>
-        <tb class="col-6">こんにちは <span class="font-weight-bold text-light h5">管理者</span> さん</tb>
-        <tb class="col-4"><%= link_to 'ログアウト',destroy_admin_session_path,method: :delete,class: 'btn btn-outline-light' %></tb>
+        <tb class="col-md-8">こんにちは <span class="font-weight-bold text-light h5">管理者</span> さん</tb>
+        <tb class="col-md-4"><%= link_to 'ログアウト',destroy_admin_session_path,method: :delete,class: 'btn btn-outline-light' %></tb>
       <% else %>
-        <tb class="col-6">こんにちは <span class="font-weight-bold text-light h5" >ゲスト</span> さん</tb>
-        <tb class="col-3"><%= link_to 'ログイン',new_user_session_path,class: 'btn btn-outline-light'%></tb>
-        <tb class="col-3"><%= link_to '新規登録',new_user_registration_path,class: 'btn btn-outline-light'%></tb>
+        <tb class="col-md-6">こんにちは <span class="font-weight-bold text-light h5" >ゲスト</span> さん</tb>
+        <tb class="col-md-3"><%= link_to 'ログイン',new_user_session_path,class: 'btn btn-outline-light'%></tb>
+        <tb class="col-md-3"><%= link_to '新規登録',new_user_registration_path,class: 'btn btn-outline-light'%></tb>
       <% end %>
       </div>
     </div>
@@ -22,15 +22,15 @@
     <% else %>
     <div class="row mt-2 mb-3 d-flex align-items-center justify-content-center">
       <% if user_signed_in? %>
-      <div class="col-4 text-center d-flex justify-content-end">
+      <div class="col-md-4 text-center d-flex justify-content-center">
         <tb><%= link_to 'アイデア投稿',new_users_post_path,class: 'btn btn-info rounded-pill mr-3' %></tb>
         <tb><%= link_to 'アイデア募集',new_users_invite_path,class: 'btn btn-success rounded-pill' %></tb>
       </div>
       <% end %>
-      <div class="col-8 text-center">
+      <div class="col-md-8 mt-2 text-center">
         <%= form_with url:users_search_path, method: :get, local: true do |f| %>
-          <tb><%= f.text_field 'search[value]', class: "col-6" %></tb>
-          <tb><%= f.select 'search[model]', options_for_select({ "アイデア投稿" => "post", "アイデア投稿 タグ" => "tag", "アイデア募集" => "invite", "アイデア募集 タグ" => "invite_tag" }), class: "col-2" %></tb>
+          <tb><%= f.text_field 'search[value]', class: "col-md-6 mb-2" %></tb>
+          <tb><%= f.select 'search[model]', options_for_select({ "アイデア投稿" => "post", "アイデア投稿 タグ" => "tag", "アイデア募集" => "invite", "アイデア募集 タグ" => "invite_tag" }), size:"158×30", class: "col-md-2" %></tb>
           <tb><%= f.submit "検索", class: "btn-secondary" %></tb>
         <% end %>
       </div>

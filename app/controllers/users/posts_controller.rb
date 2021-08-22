@@ -57,7 +57,6 @@ class Users::PostsController < ApplicationController
       flash[:notice] = "アイデア投稿の内容を変更しました"
       redirect_to users_post_path(@post)
     else
-      tag_list = params[:post][:tag_ids].split(',')
       render :edit
     end
   end
