@@ -4,13 +4,13 @@
       <div class="col-md-2">
         <a class="navbar-brand p-3 text-light" href="/"><span class="h2">Aha!</span></a>
       </div>
-      <div class="col-md-6 offset-sm-4 text-center d-flex align-items-center justify-content-end">
+      <div class="col-md-6 offset-md-4 text-center d-flex align-items-center justify-content-end">
       <% if user_signed_in? %>
-        <tb class="col-8">こんにちは <span class="font-weight-bold text-light h5"><%= current_user.name %></span> さん</tb>
-        <tb class="col-4"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,class: 'btn btn-outline-light' %></tb>
+        <tb class="col-md-8">こんにちは <span class="font-weight-bold text-light h5"><%= current_user.name %></span> さん</tb>
+        <tb class="col-md-4"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,class: 'btn btn-outline-light' %></tb>
       <% elsif admin_signed_in? %>
-        <tb class="col-8">こんにちは <span class="font-weight-bold text-light h5">管理者</span> さん</tb>
-        <tb class="col-4"><%= link_to 'ログアウト',destroy_admin_session_path,method: :delete,class: 'btn btn-outline-light' %></tb>
+        <tb class="col-md-8">こんにちは <span class="font-weight-bold text-light h5">管理者</span> さん</tb>
+        <tb class="col-md-4"><%= link_to 'ログアウト',destroy_admin_session_path,method: :delete,class: 'btn btn-outline-light' %></tb>
       <% else %>
         <tb class="col-md-6">こんにちは <span class="font-weight-bold text-light h5" >ゲスト</span> さん</tb>
         <tb class="col-md-3"><%= link_to 'ログイン',new_user_session_path,class: 'btn btn-outline-light'%></tb>
@@ -22,7 +22,7 @@
     <% else %>
     <div class="row mt-2 mb-3 d-flex align-items-center justify-content-center">
       <% if user_signed_in? %>
-      <div class="col-xs-4 text-center d-flex justify-content-end">
+      <div class="col-md-4 text-center d-flex justify-content-center">
         <tb><%= link_to 'アイデア投稿',new_users_post_path,class: 'btn btn-info rounded-pill mr-3' %></tb>
         <tb><%= link_to 'アイデア募集',new_users_invite_path,class: 'btn btn-success rounded-pill' %></tb>
       </div>
