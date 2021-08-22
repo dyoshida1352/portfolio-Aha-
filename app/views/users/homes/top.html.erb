@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
   <div class="mt-4 mb-5">
     <div>
       <h4 class="text-center mb-4">人気のタグ</h4>
@@ -6,7 +6,7 @@
         <% @tags.each do |tag| %>
           <%= link_to users_posts_path(tag_id: tag.id) do %>
             <% if tag.posts.count > 0 %>
-              <div class="btn btn-outline-secondary rounded-pill mr-2">#<%= tag.tag_name %>(<%= tag.posts.count %>)</div>
+              <div class="btn btn-outline-secondary rounded-pill mb-2 mr-2">#<%= tag.tag_name %>(<%= tag.posts.count %>)</div>
             <% end %>
           <% end %>
         <% end %>
@@ -16,7 +16,7 @@
   <h4 class="text-center mb-4">新着アイデア</h4>
   <div class="row d-flex justify-content-center">
     <% @posts.each do |post| %>
-    <div class="col-3 mr-5 mb-4 text-center" style="background-color: #FFDBC9;">
+    <div class="col-md-3 mr-3 ml-3 mb-4 text-center" style="background-color: #FFDBC9;">
       <p class="mt-2"><%= link_to post.post_name, users_post_path(post) %></p>
       <div class="mt-2 mb-2 d-flex justify-content-center">
         <div>
@@ -24,8 +24,8 @@
         </div>
       </div>
       <p>
-        <tb class="col-6"><%= post.likes.count %>いいね</tb>
-        <tb class="col-6"><%= post.post_comments.count %>コメント</tb>
+        <tb class="col-md-6"><%= post.likes.count %>いいね</tb>
+        <tb class="col-md-6"><%= post.post_comments.count %>コメント</tb>
       </p>
       <p><%= render "users/posts/tag", post: post %></p>
       <p class="text-right"><%= post.created_at.to_s(:datetime_ymd) %>　<%= link_to post.user.name, users_user_path(post.user) %></p>

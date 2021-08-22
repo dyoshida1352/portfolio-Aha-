@@ -3,24 +3,24 @@
   <%= render "layouts/error_messages", resource: @post %>
   <%= form_with model: [:users, @post], local: true do |f| %>
     <div class="row mb-3 d-flex justify-content-center">
-      <div class="col-3"><%= f.label :アイデア画像 %></div>
-      <div class="col-3"><%= f.attachment_field :post_image %></div>
+      <div class="col-md-3"><%= f.label :アイデア画像 %></div>
+      <div class="col-md-5"><%= f.attachment_field :post_image %></div>
     </div>
     <div class="row mb-3 d-flex justify-content-center">
-      <div class="col-3 offset-2"><%= f.label :アイデア名 %></div>
-      <div class="col-5"><%= f.text_field :post_name, class: "form-control", autofocus: true %></div>
+      <div class="col-md-3"><%= f.label :アイデア名 %></div>
+      <div class="col-md-5"><%= f.text_field :post_name, class: "form-control", autofocus: true %></div>
     </div>
     <div class="row mb-3 d-flex justify-content-center">
-      <div class="col-3 offset-2"><%= f.label :タグ %></div>
-      <div class="col-5"><%= f.text_field :tag_ids, class: "form-control", id:'tag_ids',\
+      <div class="col-md-3"><%= f.label :タグ %></div>
+      <div class="col-md-5"><%= f.text_field :tag_ids, class: "form-control", id:'tag_ids',\
                             placeholder: "タグを複数つける場合は','で区切ってください" %></div>
     </div>
     <div class="row mb-3 d-flex justify-content-center">
-      <div class="col-3 offset-2"><%= f.label :アイデア説明 %></div>
-      <div class="col-5"><%= f.text_area :post_description, size:"80x12", class: "form-control", autofocus: true %></div>
+      <div class="col-md-3"><%= f.label :アイデア説明 %></div>
+      <div class="col-md-5"><%= f.text_area :post_description, size:"80x12", class: "form-control", autofocus: true %></div>
     </div>
     <div class="row mb-3 d-flex justify-content-center">
-      <div class="col-2 offset-2"><%= f.submit "投稿する", class: "btn btn-success" %></div>
+      <div class="col-md-2"><%= f.submit "投稿する", class: "btn btn-success" %></div>
     </div>
   <% end %>
 </div>

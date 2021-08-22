@@ -1,25 +1,27 @@
 <div class="container mt-5">
-	<h2 class="head-line mt-4 mb-5"><%= @user.name %>　のユーザー情報</h2>
-	<%= link_to " 編集する", edit_admins_user_path, class: "glyphicon glyphicon-pencil btn btn-success" %>
-	<div class="row h5 d-flex align-items-center mb-4">
-		<div><%= attachment_image_tag @user, :user_image, fallback: "no_image.jpg", size: "250x200" %></div>
+	<h2 class="head-line mt-4 mb-4"><%= @user.name %>　のユーザー情報</h2>
+	<div class="row h5 d-flex align-items-center justify-content-center mb-4">
+		<div class="col-md-2 mt-3 d-flex justify-content-center"><%= attachment_image_tag @user, :user_image, fallback: "no_image.jpg", size: "250x200", class: "rounded-circle" %></div>
+		<div class="col-md-4 mt-3 text-center">
+			<%= link_to " 編集する", edit_admins_user_path, class: "glyphicon glyphicon-pencil btn btn-success" %>
+		</div>
 	</div>
 	<div>
-		<div class="row mb-3" >
-			<div class="col-2">ユーザーネーム</div>
-			<div class="col-4"><%= @user.name %></div>
+		<div class="row mb-3 d-flex justify-content-center" >
+			<div class="col-md-2">ユーザーネーム</div>
+			<div class="col-md-4"><%= @user.name %></div>
 		</div>
-		<div class="row mb-3" >
-			<div class="col-2">年代</div>
-			<div class="col-4"><%= @user.age %></div>
+		<div class="row mb-3 d-flex justify-content-center" >
+			<div class="col-md-2">年代</div>
+			<div class="col-md-4"><%= @user.age %></div>
 		</div>
-		<div class="row mb-3" >
-			<div class="col-2">アイデア投稿</div>
-			<div class="col-4"><%= link_to @user.posts.count, admins_posts_path(user_id: @user.id) %> 件</div>
+		<div class="row mb-3 d-flex justify-content-center" >
+			<div class="col-md-2">アイデア投稿</div>
+			<div class="col-md-4"><%= link_to @user.posts.count, admins_posts_path(user_id: @user.id) %> 件</div>
 		</div>
-		<div class="row mb-4" >
-			<div class="col-2">アイデア募集</div>
-			<div class="col-4"><%= link_to @user.invites.count, admins_invites_path(user_id: @user.id) %> 件</div>
+		<div class="row mb-4 d-flex justify-content-center" >
+			<div class="col-md-2">アイデア募集</div>
+			<div class="col-md-4"><%= link_to @user.invites.count, admins_invites_path(user_id: @user.id) %> 件</div>
 		</div>
 	</div>
 </div>
