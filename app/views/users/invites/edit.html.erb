@@ -3,24 +3,24 @@
   <%= render "layouts/error_messages", resource: @invite %>
   <%= form_with model: [:users, @invite], local: true do |f| %>
     <div class="row mb-3 d-flex justify-content-center">
-      <div class="col-3"><%= f.label :アイデア募集画像 %></div>
-      <div class="col-3"><%= f.attachment_field :invite_image %></div>
+      <div class="col-md-3"><%= f.label :アイデア募集画像 %></div>
+      <div class="col-md-5"><%= f.attachment_field :invite_image %></div>
     </div>
     <div class="row mb-3 d-flex justify-content-center">
-      <div class="col-3 offset-2"><%= f.label :アイデ募集名 %></div>
-      <div class="col-5"><%= f.text_field :invite_name, class: "form-control", autofocus: true %></div>
+      <div class="col-md-3"><%= f.label :アイデ募集名 %></div>
+      <div class="col-md-5"><%= f.text_field :invite_name, class: "form-control", autofocus: true %></div>
     </div>
     <div class="row mb-3 d-flex justify-content-center">
-      <div class="col-3 offset-2"><%= f.label :タグ %></div>
-      <div class="col-5"><%= f.text_field :invite_tag_ids, class: "form-control",value: @invite_tag_list,\
+      <div class="col-md-3"><%= f.label :タグ %></div>
+      <div class="col-md-5"><%= f.text_field :invite_tag_ids, class: "form-control",value: @invite_tag_list,\
                           placeholder: "タグを複数つけるには','で区切ってください" %></div>
     </div>
     <div class="row mb-3 d-flex justify-content-center">
-      <div class="col-3 offset-2"><%= f.label :アイデア募集説明 %></div>
-      <div class="col-5"><%= f.text_area :invite_description, size:"80x12", class: "form-control", autofocus: true %></div>
+      <div class="col-md-3"><%= f.label :アイデア募集説明 %></div>
+      <div class="col-md-5"><%= f.text_area :invite_description, size:"80x12", class: "form-control", autofocus: true %></div>
     </div>
     <div class="row mb-3 d-flex justify-content-center">
-      <div class="col-2 offset-2"><%= f.submit "変更を保存", class: "btn btn-success" %></div>
+      <div class="col-md-2"><%= f.submit "変更を保存", class: "btn btn-success" %></div>
     </div>
   <% end %>
 </div>

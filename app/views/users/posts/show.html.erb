@@ -2,11 +2,11 @@
   <h2 class="mt-4 mb-2"><%= @post.post_name %></h2>
   <h5 class="mb-5"><%= @post.created_at.to_s(:datetime_ymd) %></h5>
   <div class="row">
-    <h5 class="col-md-6">
+    <h5 class="col-md-6 mb-3">
       <%= attachment_image_tag @post.user, :user_image, :fill, 70, 70, fallback: "no_image.jpg", size: "70x70", class: "rounded-circle" %>
       <%= link_to @post.user.name, users_user_path(@post.user) %>
     </h5>
-    <div class="col-md-6 text-right">
+    <div class="col-md-6 mb-3 text-right">
     <% if @post.user == current_user %>
       <td><%= link_to "編集する", edit_users_post_path(@post), class:"btn btn-sm btn-success" %></td>
       <td><%= link_to "削除する", users_post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-sm btn-danger" %></td>
@@ -15,7 +15,7 @@
   </div>
   <div class="row">
     <div class="col-md-6" id="post_<%= @post.id %>">
-      <div class="mb-3"><%= attachment_image_tag @post, :post_image, fallback: "no_post_image.jpg", size: "500x400" %></div>
+      <div class="mb-3 d-flex justify-content-center"><%= attachment_image_tag @post, :post_image, fallback: "no_post_image.jpg", size: "400x300" %></div>
       <% if user_signed_in? %>
         <p>いいね<span class="like-btn"><%= render "users/likes/like-btn", post: @post %></span></p>
       <% else %>
@@ -34,7 +34,7 @@
     <%= render 'users/post_comments/comment', post: @post %>
   </table>
   <% if user_signed_in? %>
-  <div class="mb-5  d-flex justify-content-end">
+  <div class="mb-5 d-flex justify-content-end">
     <%= form_with model:[:users, @post, @post_comment] do |f| %>
       <%= f.text_area :post_comment, size:"65x3", class: "form-control" %><br>
       <p class="text-right"><%= f.submit 'コメントする', class: "btn btn-warning" %></p>
