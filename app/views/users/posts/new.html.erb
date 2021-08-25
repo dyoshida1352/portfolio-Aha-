@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
   <h2 class="mt-4 mb-5 text-center">アイデア投稿</h2>
   <%= render "layouts/error_messages", resource: @post %>
   <%= form_with model: [:users, @post], local: true do |f| %>
@@ -19,7 +19,7 @@
       <div class="col-md-3"><%= f.label :アイデア説明 %></div>
       <div class="col-md-5"><%= f.text_area :post_description, size:"80x12", class: "form-control", autofocus: true %></div>
     </div>
-    <div class="row mb-3 d-flex justify-content-center">
+    <div class="row d-flex justify-content-center">
       <div class="col-md-2"><%= f.submit "投稿する", class: "btn btn-success" %></div>
     </div>
   <% end %>
