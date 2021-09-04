@@ -9,7 +9,7 @@
   <tbody>
     <% users.each do |user| %>
       <tr>
-        <td><%= attachment_image_tag(user, :user_image, :fill, 50, 50, fallback: "no_image.jpg", class: "rounded-circle") %></td>
+        <td><%= attachment_image_tag(user, :user_image, :fill, 55, 55, fallback: "no_image.jpg", class: "rounded-circle") %></td>
         <td><%= link_to user.name, users_user_path(user) %></td>
         <td>アイデア投稿数: <%= user.posts.count %></td>
         <td>アイデア募集数: <%= user.invites.count %></td>
