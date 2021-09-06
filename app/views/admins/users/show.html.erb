@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
 	<h2 class="head-line mt-4 mb-4"><%= @user.name %>　のユーザー情報</h2>
 	<div class="row h5 d-flex align-items-center justify-content-center mb-4">
 		<div class="col-md-2 mt-3 d-flex justify-content-center"><%= attachment_image_tag @user, :user_image, fallback: "no_image.jpg", size: "250x200", class: "rounded-circle" %></div>
@@ -19,7 +19,7 @@
 			<div class="col-md-2">アイデア投稿</div>
 			<div class="col-md-4"><%= link_to @user.posts.count, admins_posts_path(user_id: @user.id) %> 件</div>
 		</div>
-		<div class="row mb-4 d-flex justify-content-center" >
+		<div class="row d-flex justify-content-center" >
 			<div class="col-md-2">アイデア募集</div>
 			<div class="col-md-4"><%= link_to @user.invites.count, admins_invites_path(user_id: @user.id) %> 件</div>
 		</div>
