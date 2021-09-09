@@ -5,9 +5,6 @@ class Invite < ApplicationRecord
   has_many  :invite_tag_relationships, dependent: :destroy
   has_many  :invite_tags, through: :invite_tag_relationships
 
-  #画像用の設定
-  attachment :invite_image
-
   #タグ付け機能(投稿時)用のメソッド
   def save_invite_tags(saveinvite_tags)
     saveinvite_tags.each do |new_invite_tag_name|
