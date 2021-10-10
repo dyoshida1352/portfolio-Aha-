@@ -9,9 +9,9 @@ class Users::InvitesController < ApplicationController
     @new_invite = Invite.new
     @invite = Invite.new(invite_params)
     @invite.user_id = current_user.id
-    invite_tag_list = params[:invite][:invite_tag_ids].split(',')
+    invite_tags = params[:invite][:invite_tag_ids].split(',')
     if @invite.save
-      @invite.save_invite_tags(invite_tag_list)
+      @invite.save_invite_tags(invite_tags)
       flash[:notice] = "アイデア募集を投稿しました"
       redirect_to users_invites_path
     else

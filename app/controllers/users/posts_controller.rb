@@ -9,9 +9,9 @@ class Users::PostsController < ApplicationController
     @new_post = Post.new
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    tag_list = params[:post][:tag_ids].split(',')
+    tags = params[:post][:tag_ids].split(',')
     if @post.save
-      @post.save_tags(tag_list)
+      @post.save_tags(tags)
       flash[:notice] = "アイデアを投稿しました"
       redirect_to users_posts_path
     else
