@@ -19,9 +19,9 @@
       <% if user_signed_in? %>
         <p>いいね<span class="like-btn"><%= render "users/likes/like-btn", post: @post %></span></p>
       <% else %>
-        <p class="post-comments-count">いいね数：<%= @post.likes.count %></p>
+        <p class="post-comments-count"><%= @post.likes.count %>いいね</p>
       <% end %>
-        <p class="post-comments-count">コメント数：<%= @post.post_comments.count %></p>
+        <p class="post-comments-count"><%= @post.post_comments.count %>コメント</p>
         <p><%= render "tag", post: @post %></p>
     </div>
     <div class="col-md-6">

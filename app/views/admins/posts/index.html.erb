@@ -15,8 +15,8 @@
         <td><%= link_to post.post_name, admins_post_path(post) %></td>
         <td><%= link_to post.user.name, admins_user_path(post.user) %></td>
         <td><%= post.created_at.to_s(:datetime_ymd) %></td>
-        <td>いいね数:<%= post.likes.count %></td>
-        <td>コメント数：<%= post.post_comments.count %></td>
+        <td><%= post.likes.count %>いいね</td>
+        <td><%= post.post_comments.count %>コメント</td>
       </tr>
       <% end %>
     </tbody>
