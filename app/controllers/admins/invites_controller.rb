@@ -15,16 +15,16 @@ class Admins::InvitesController < ApplicationController
 
   def edit
     @invite = Invite.find(params[:id])
-    @invite_tag_list =@invite.invite_tags.pluck(:invite_tag_name).join(",")
+    @invite_tag_names =@invite.join_invite_tag_names
   end
 
   def update
     @invite = Invite.find(params[:id])
-    @invite_tag_list =@invite.invite_tags.pluck(:invite_tag_name).join(",")
-    invite_tag_list = params[:invite][:invite_tag_ids].split(',')
+    @invite_tag_names =@invite.join_invite_tag_names
+    invite_tags = params[:invite][:invite_tag_ids].split(',')
     if @invite.update(post_params)
       flash[:notice] = "アイデア募集の内容を変更しました"
-      @invite.save_invite_tags(invite_tag_list)
+      @invite.save_invite_tags(invite_tags)
       redirect_to admins_invite_path(@invite)
     else
       render :edit
