@@ -9,9 +9,9 @@ class Users::InvitesController < ApplicationController
     @new_invite = Invite.new
     @invite = Invite.new(invite_params)
     @invite.user_id = current_user.id
-    invite_tag_list = params[:invite][:invite_tag_ids].split(',')
+    invite_tags = params[:invite][:invite_tag_ids].split(',')
     if @invite.save
-      @invite.save_invite_tags(invite_tag_list)
+      @invite.save_invite_tags(invite_tags)
       flash[:notice] = "アイデア募集を投稿しました"
       redirect_to users_invites_path
     else
@@ -34,7 +34,7 @@ class Users::InvitesController < ApplicationController
 
   def edit
     @invite = Invite.find(params[:id])
-    @invite_tag_list =@invite.invite_tags.pluck(:invite_tag_name).join(",")
+    @invite_tag_names =@invite.join_invite_tag_names
     if current_user != @invite.user
       redirect_to users_invites_path
     end
@@ -42,10 +42,10 @@ class Users::InvitesController < ApplicationController
 
   def update
     @invite = Invite.find(params[:id])
-    @invite_tag_list =@invite.invite_tags.pluck(:invite_tag_name).join(",")
-    invite_tag_list = params[:invite][:invite_tag_ids].split(',')
+    @invite_tag_names =@invite.join_invite_tag_names
+    invite_tags = params[:invite][:invite_tag_ids].split(',')
     if @invite.update(invite_params)
-      @invite.save_invite_tags(invite_tag_list)
+      @invite.save_invite_tags(invite_tags)
       flash[:notice] = "アイデア募集の内容を変更しました"
       redirect_to users_invite_path(@invite)
     else

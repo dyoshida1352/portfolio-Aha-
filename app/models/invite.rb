@@ -5,9 +5,6 @@ class Invite < ApplicationRecord
   has_many  :invite_tag_relationships, dependent: :destroy
   has_many  :invite_tags, through: :invite_tag_relationships
 
-  #画像用の設定
-  attachment :invite_image
-
   #タグ付け機能(投稿時)用のメソッド
   def save_invite_tags(saveinvite_tags)
     saveinvite_tags.each do |new_invite_tag_name|
@@ -16,7 +13,16 @@ class Invite < ApplicationRecord
     end
   end
 
-  #タグ付け機能(編集時)用のメソッド
+  #タグ付け機能(編集時/編集後の保存時)用のメソッド
+  def invite_tag_names
+    invite_tags.pluck(:invite_tag_name)
+  end
+
+  def join_invite_tag_names(separator = ',')
+    invite_tag_names.join(separator)
+  end
+
+  #タグ付け機能(編集後の保存時)用のメソッド
   def save_invite_tags(saveinvite_tags)
     current_invite_tags = self.invite_tags.pluck(:invite_tag_name) unless self.invite_tags.nil?
     old_invite_tags = current_invite_tags - saveinvite_tags
@@ -31,6 +37,8 @@ class Invite < ApplicationRecord
       self.invite_tags << invite_tag
     end
   end
+
+
 
 
   #画像用の設定

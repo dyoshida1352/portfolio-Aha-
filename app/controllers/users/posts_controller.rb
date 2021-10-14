@@ -9,9 +9,9 @@ class Users::PostsController < ApplicationController
     @new_post = Post.new
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    tag_list = params[:post][:tag_ids].split(',')
+    tags = params[:post][:tag_ids].split(',')
     if @post.save
-      @post.save_tags(tag_list)
+      @post.save_tags(tags)
       flash[:notice] = "アイデアを投稿しました"
       redirect_to users_posts_path
     else
@@ -42,7 +42,7 @@ class Users::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @tag_list =@post.tags.pluck(:tag_name).join(",")
+    @tag_names =@post.join_tag_names
     if current_user != @post.user
       redirect_to users_posts_path
     end
@@ -50,10 +50,10 @@ class Users::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @tag_list =@post.tags.pluck(:tag_name).join(",")
-    tag_list = params[:post][:tag_ids].split(',')
+    @tag_names =@post.join_tag_names
+    tags = params[:post][:tag_ids].split(',')
     if @post.update(post_params)
-      @post.save_tags(tag_list)
+      @post.save_tags(tags)
       flash[:notice] = "アイデア投稿の内容を変更しました"
       redirect_to users_post_path(@post)
     else
