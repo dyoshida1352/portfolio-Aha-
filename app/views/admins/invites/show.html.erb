@@ -14,7 +14,7 @@
   <div class="row">
     <div class="col-md-6" id="invite_<%= @invite.id %>">
       <div class="mb-3 d-flex justify-content-center"><%= attachment_image_tag @invite, :invite_image, fallback: "no_invite_image.jpg", size: "400x300" %></div>
-      <p class="invite-comments-count">コメント数：<%= @invite.invite_comments.count %></p>
+      <p class="invite-comments-count"><%= @invite.invite_comments.count %>コメント</p>
       <p><%= render "users/invites/tag", invite: @invite %></p>
     </div>
     <div class="col-md-6">

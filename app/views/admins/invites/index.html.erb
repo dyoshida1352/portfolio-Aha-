@@ -15,7 +15,7 @@
         <td><%= link_to invite.invite_name, admins_invite_path(invite) %></td>
         <td><%= link_to invite.user.name, admins_user_path(invite.user) %></td>
         <td><%= invite.created_at.to_s(:datetime_ymd) %></td>
-        <td>コメント数：<%= invite.invite_comments.count %></td>
+        <td><%= invite.invite_comments.count %>コメント</td>
       </tr>
       <% end %>
     </tbody>

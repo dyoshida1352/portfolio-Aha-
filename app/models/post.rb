@@ -19,6 +19,15 @@ class Post < ApplicationRecord
     end
   end
 
+  #タグ付け機能(編集時/編集後の保存時)用のメソッド
+  def tag_names
+    tags.pluck(:tag_name)
+  end
+
+  def join_tag_names(separator = ',')
+    tag_names.join(separator)
+  end
+
   #タグ付け機能(編集時)用のメソッド
   def save_tags(savepost_tags)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
