@@ -2,14 +2,10 @@
 	<h2 class="head-line mt-4 mb-4"><%= @user.name %>　のページ</h2>
 	<div class="row h5 d-flex align-items-center justify-content-center mb-4">
 		<div class="col-md-2 mt-3 d-flex justify-content-center"><%= attachment_image_tag @user, :user_image, fallback: "no_image.jpg", size: "250x200", class: "rounded-circle" %></div>
-		<div class="col-md-4 mt-3 text-center">
+		<div class="col-md-4 mt-3 text-center" id="relationship-btn">
 		<% if user_signed_in? %>
 			<% if current_user != @user %>
-				<% if current_user.following?(@user) %>
-				  <%= link_to "フォロー外す", users_user_relationships_path(@user.id), method: :delete, class: "btn btn-primary" %>
-				<% else %>
-				  <%= link_to "フォローする", users_user_relationships_path(@user.id), method: :post, class: "btn btn-success" %>
-				<% end %>
+				<%= render 'users/relationships/relationship-btn', user: @user %>
 			<% else %>
 				<%= link_to " 編集する", edit_users_user_path, class: "glyphicon glyphicon-pencil btn btn-success" %>
 			<% end %>
@@ -41,11 +37,11 @@
 		<% end %>
 		<div class="row mb-4 d-flex justify-content-center">
 			<div class="col-md-2">フォロー</div>
-			<div class="col-md-4"><%= link_to @user.followings.count, users_user_followings_path(@user) %> 人</div>
+			<div class="col-md-4 followings-count"><%= link_to @user.followings.count, users_user_followings_path(@user) %> 人</div>
 		</div>
 		<div class="row d-flex justify-content-center">
 			<div class="col-md-2">フォロワー</div>
-			<div class="col-md-4"><%= link_to @user.followers.count, users_user_followers_path(@user) %> 人</div>
+			<div class="col-md-4 followers-count"><%= link_to @user.followers.count, users_user_followers_path(@user) %> 人</div>
 		</div>
 	</div>
 </div>
