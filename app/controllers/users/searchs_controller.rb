@@ -14,12 +14,10 @@ class Users::SearchsController < ApplicationController
     if model == 'post'
       Post.where("post_name LIKE ?", "%#{value}%")
     elsif model == 'tag'
-      # Post.joins(:tag_relationships, :tags).where("tags.tag_name LIKE ?", "%#{value}%" ) 複数個のタグ検索機能 ※要修正
       Tag.find_by("tag_name LIKE ?", "%#{value}%").posts
     elsif model == 'invite'
       Invite.where("invite_name LIKE ?", "%#{value}%")
     elsif model == 'invite_tag'
-      # Invite.(:invite_tag_relationships, :invite_tags).where("invite_tags.invite_tag_name LIKE ?", "%#{value}%" ) 複数個のタグ検索機能 ※要修正
       InviteTag.find_by("invite_tag_name LIKE ?",  "%#{value}%").invites
     end
   end

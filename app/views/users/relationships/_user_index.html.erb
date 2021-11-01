@@ -16,7 +16,11 @@
         <td id="relationship-btn">
         <% if user_signed_in? %>
           <% if current_user != user %>
-            <%= render 'relationship-btn', user: user %>
+            <% if current_user.following?(user) %>
+              <%= link_to "フォロー外す", users_user_relationships_path(user.id), method: :delete, class: "btn btn-primary" %>
+            <% else %>
+              <%= link_to "フォローする", users_user_relationships_path(user.id), method: :post, class: "btn btn-success" %>
+            <% end %>
           <% end %>
         <% end %>
         </td>
