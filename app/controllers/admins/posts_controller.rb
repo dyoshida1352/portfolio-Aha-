@@ -3,9 +3,9 @@ class Admins::PostsController < ApplicationController
 
   def index
     if params[:user_id]
-      @posts = Post.where(user_id: params[:user_id]).page(params[:page]).per(20)
+      @posts = Post.where(user_id: params[:user_id]).page(params[:page]).per(20).order(created_at: :desc)
     else
-      @posts = Post.all.page(params[:page]).per(20)
+      @posts = Post.all.page(params[:page]).per(20).order(created_at: :desc)
     end
   end
 

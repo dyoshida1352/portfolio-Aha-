@@ -1,16 +1,16 @@
 <% invite.invite_comments.each do |invite_comment| %>
   <% invite_comment_user = invite_comment.user %>
   <tr>
-  	<td>
+  	<td class="text-center" style="width: 20%">
   		<%= link_to users_user_path(invite_comment_user), class: "user_#{invite_comment_user.id}" do %>
     		<%= attachment_image_tag invite_comment_user, :user_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class: "rounded-circle" %><br>
     		<%= invite_comment_user.name %>
   		<% end %>
   		<%= date_format(invite_comment.created_at) %>
   	</td>
-  	<td><%= invite_comment.invite_comment %></td>
+  	<td class="align-middle" style="width: 60%"><%= invite_comment.invite_comment %></td>
   	<% if current_user == invite_comment_user || current_admin %>
-    	<td><%= link_to '×', users_invite_invite_comment_path(invite_comment.invite_id, invite_comment.id), class: 'btn btn-danger rounded-circle p-1', style: "width:2rem;height:2rem;", method: :delete, remote: true %></td>
+    	<td class="text-center align-middle" style="width: 20%"><%= link_to '×', users_invite_invite_comment_path(invite_comment.invite_id, invite_comment.id), class: 'btn btn-danger rounded-circle p-1', style: "width:2rem;height:2rem;", method: :delete, remote: true %></td>
   	<% end %>
   </tr>
 <% end %>

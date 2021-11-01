@@ -12,15 +12,13 @@ class Users::SearchsController < ApplicationController
 
   def partical(model, value)
     if model == 'post'
-      Post.where("post_name LIKE ?", "%#{value}%")
+      Post.where("post_name LIKE ?", "%#{value}%").order(created_at: :desc)
     elsif model == 'tag'
-      # Post.joins(:tag_relationships, :tags).where("tags.tag_name LIKE ?", "%#{value}%" ) 複数個のタグ検索機能 ※要修正
-      Tag.find_by("tag_name LIKE ?", "%#{value}%").posts
+      Tag.find_by("tag_name LIKE ?", "%#{value}%").posts.order(created_at: :desc)
     elsif model == 'invite'
-      Invite.where("invite_name LIKE ?", "%#{value}%")
+      Invite.where("invite_name LIKE ?", "%#{value}%").order(created_at: :desc)
     elsif model == 'invite_tag'
-      # Invite.(:invite_tag_relationships, :invite_tags).where("invite_tags.invite_tag_name LIKE ?", "%#{value}%" ) 複数個のタグ検索機能 ※要修正
-      InviteTag.find_by("invite_tag_name LIKE ?",  "%#{value}%").invites
+      InviteTag.find_by("invite_tag_name LIKE ?",  "%#{value}%").invites.order(created_at: :desc)
     end
   end
 
