@@ -62,22 +62,6 @@ main {
   background-color: #FDF5E6;
 }
 
-// アバウトページの背景画像
-.about-bg-image1 {
-  background-image: image-url("about_bg_image1.jpg");
-  background-size: contain;
-  background-position: center;
-  width: 100%;
-  height: 400px;
-}
-
-.about-bg-image2 {
-  background-image: image-url("about_bg_image2.jpg");
-  background-size: contain;
-  background-position: center;
-  width: 100%;
-  height: 570px;
-}
 
 // いいね赤いハート
 .heart_red{color:#e54747;}
