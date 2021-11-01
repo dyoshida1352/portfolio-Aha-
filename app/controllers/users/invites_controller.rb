@@ -21,9 +21,9 @@ class Users::InvitesController < ApplicationController
 
   def index
     if params[:user_id]
-      @invites = Invite.where(user_id: params[:user_id]).page(params[:page]).per(20)
+      @invites = Invite.where(user_id: params[:user_id]).page(params[:page]).per(20).order(created_at: :desc)
     else
-      @invites = Invite.all.page(params[:page]).per(20)
+      @invites = Invite.all.page(params[:page]).per(20).order(created_at: :desc)
     end
   end
 
