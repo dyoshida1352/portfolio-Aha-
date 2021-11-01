@@ -1,4 +1,4 @@
-<table class='table'>
+<table class='table table-hover'>
   <thead class="bg-light">
     <tr>
       <th></th>
@@ -9,11 +9,11 @@
   <tbody>
     <% users.each do |user| %>
       <tr>
-        <td><%= attachment_image_tag(user, :user_image, :fill, 50, 50, fallback: "no_image.jpg", class: "rounded-circle") %></td>
-        <td><%= link_to user.name, users_user_path(user) %></td>
-        <td>アイデア投稿: <%= user.posts.count %></td>
-        <td>アイデア募集: <%= user.invites.count %></td>
-        <td id="relationship-btn">
+        <td class="text-center align-middle"><%= attachment_image_tag(user, :user_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class: "rounded-circle") %></td>
+        <td class="align-middle"><%= link_to user.name, users_user_path(user) %></td>
+        <td class="align-middle">アイデア投稿: <%= user.posts.count %></td>
+        <td class="align-middle">アイデア募集: <%= user.invites.count %></td>
+        <td id="relationship-btn" class="align-middle">
         <% if user_signed_in? %>
           <% if current_user != user %>
             <% if current_user.following?(user) %>

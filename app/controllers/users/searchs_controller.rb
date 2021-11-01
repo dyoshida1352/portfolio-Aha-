@@ -12,13 +12,13 @@ class Users::SearchsController < ApplicationController
 
   def partical(model, value)
     if model == 'post'
-      Post.where("post_name LIKE ?", "%#{value}%")
+      Post.where("post_name LIKE ?", "%#{value}%").order(created_at: :desc)
     elsif model == 'tag'
-      Tag.find_by("tag_name LIKE ?", "%#{value}%").posts
+      Tag.find_by("tag_name LIKE ?", "%#{value}%").posts.order(created_at: :desc)
     elsif model == 'invite'
-      Invite.where("invite_name LIKE ?", "%#{value}%")
+      Invite.where("invite_name LIKE ?", "%#{value}%").order(created_at: :desc)
     elsif model == 'invite_tag'
-      InviteTag.find_by("invite_tag_name LIKE ?",  "%#{value}%").invites
+      InviteTag.find_by("invite_tag_name LIKE ?",  "%#{value}%").invites.order(created_at: :desc)
     end
   end
 
