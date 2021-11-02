@@ -28,8 +28,8 @@ class Users::PostsController < ApplicationController
       @posts = Kaminari.paginate_array(@like_post).page(params[:page]).per(9).order(created_at: :desc)
     elsif params[:tag_id]
       @tag = Tag.find(params[:tag_id])
-      @tag_post = @tag.posts.all
-      @posts = Kaminari.paginate_array(@tag_post).page(params[:page]).per(9).order(created_at: :desc)
+      @tag_post = @tag.posts.all.order(created_at: :desc)
+      @posts = Kaminari.paginate_array(@tag_post).page(params[:page]).per(9)
     else
       @posts = Post.all.page(params[:page]).per(9).order(created_at: :desc)
     end
